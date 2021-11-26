@@ -1,0 +1,16 @@
+﻿"Programming_lab-01.exe" (Win32). Загружено "G:\PI-02\Programming\Programming_lab-01\Debug\Programming_lab-01.exe". Символы загружены.
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Program Files\AVAST Software\Avast\x86\aswhook.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\msvcp140d.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\vcruntime140d.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\ucrtbased.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-localization-l1-2-0.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-processthreads-l1-1-1.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-file-l1-2-0.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-timezone-l1-1-0.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-file-l2-1-0.dll". 
+"Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-synch-l1-2-0.dll". 
+Поток 0x1d54 завершился с кодом 0 (0x0).
+Программа "[10464] Programming_lab-01.exe" завершилась с кодом 0 (0x0).
