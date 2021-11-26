@@ -9,8 +9,11 @@ struct Date
 };
 
 bool setDay(Date *date, int day);
+
 bool setMonht(Date *date, int month);
+
 bool setYear(Date *date, int year);
+
 bool setDate(Date *date, int day, int month, int year);
 
 bool setDateAsCharArray(Date *date, char *str);

@@ -145,6 +145,8 @@
     <ClCompile Include="Date.cpp" />
     <ClCompile Include="PachageOfBatchesOfGoods.cpp" />
     <ClCompile Include="Programming_lab-01.cpp" />
+    <ClCompile Include="Shop.cpp" />
+    <ClCompile Include="Warehouse.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BatchOfGoods.h" />

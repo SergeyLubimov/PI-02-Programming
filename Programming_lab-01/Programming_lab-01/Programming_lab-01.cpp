@@ -2,89 +2,12 @@
 //
 
 #include "Shop.h"
-//#include "PackageOfBatchesOfGoods.h"
-//#include "BatchOfGoods.h"
-
 #include <iostream>
-
 
 using namespace std;
 
-struct MyStruct
-{
-    int a;
-};
-
-void v(MyStruct a)
-{
-    a.a++;
-}
-
-
-
-
 int main()
 {
-    //BatchOfGoods *a = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
-    //setNameOfGoods(a, "A");
-    //setIdOfGood(a, 2005);
-    //setPriceOfGoods(a, 100);
-    //setQuantityOfGoods(a, 23);
-    //setDateOfBatch(a, "10.10.2010");
-
-    //BatchOfGoods *b = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
-    //setNameOfGoods(b, "B");
-    //setIdOfGood(b, 2005);
-    //setPriceOfGoods(b, 100);
-    //setQuantityOfGoods(b, 23);
-    //setDateOfBatch(b, "02.01.2000");
-
-    //BatchOfGoods *c = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
-    //setNameOfGoods(c, "C");
-    //setIdOfGood(c, 2011);
-    //setPriceOfGoods(c, 100);
-    //setQuantityOfGoods(c, 23);
-    //setDateOfBatch(c, "09.10.2010");
-
-    //BatchOfGoods *d = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
-    //setNameOfGoods(d, "D");
-    //setIdOfGood(d, 2005);
-    //setPriceOfGoods(d, 100);
-    //setQuantityOfGoods(d, 23);
-    //setDateOfBatch(d, "10.10.1887");
-
-    ////cout << getBatchAsCharArray(a, 5);
-
-    //NULL;
-
-    //PackageOfBatchesOfGoods p;
-
-    //setNameOfPackage(&p, a->name);
-
-    //addBatch(&p, a);
-    //cout << getPackageAsCharArray(&p);
-
-    //addBatch(&p, b);
-    //cout << getPackageAsCharArray(&p);
-
-    //addBatch(&p, c);
-    //cout << getPackageAsCharArray(&p);
-
-    //addBatch(&p, d);
-    //cout << getPackageAsCharArray(&p);
-
-    //int q = 92;
-
-    //sellGoods(&p, &q);
-
-    //cout << getPackageAsCharArray(&p);
-
-   /* BatchOfGoods* batch;
-
-    batch = launchNewBatchForm();
-
-    cout << getBatchAsCharArray(*batch, 5);*/
-
     Shop shopA;
     Shop *shopB;
 
@@ -146,22 +69,5 @@ int main()
     addBatch(shopB, b3);
 
     displayAssortment(shopA);
-    displayAssortment(*shopB);    
+    displayAssortment(*shopB); 
 }
-
-
-
-
-
-
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
