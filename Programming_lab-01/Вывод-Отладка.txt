@@ -1,4 +1,4 @@
-﻿"Programming_lab-01.exe" (Win32). Загружено "G:\PI-02\Programming\Programming_lab-01\Debug\Programming_lab-01.exe". Символы загружены.
+﻿"Programming_lab-01.exe" (Win32). Загружено "G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe". Символы загружены.
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\ntdll.dll". 
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\kernel32.dll". 
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\KernelBase.dll". 
@@ -12,5 +12,5 @@
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-timezone-l1-1-0.dll". 
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-file-l2-1-0.dll". 
 "Programming_lab-01.exe" (Win32). Загружено "C:\Windows\SysWOW64\api-ms-win-core-synch-l1-2-0.dll". 
-Поток 0x1f54 завершился с кодом 0 (0x0).
-Программа "[7844] Programming_lab-01.exe" завершилась с кодом 0 (0x0).
+Поток 0x1a68 завершился с кодом 0 (0x0).
+Программа "[9876] Programming_lab-01.exe" завершилась с кодом 0 (0x0).

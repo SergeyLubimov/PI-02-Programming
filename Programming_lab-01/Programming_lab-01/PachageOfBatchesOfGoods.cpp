@@ -1,6 +1,14 @@
 
 #include "PackageOfBatchesOfGoods.h"
 
+void init(PackageOfBatchesOfGoods *p)
+{
+	p->name = NULL;
+	p->head = NULL;
+	p->tail = NULL;
+	p->package_size = 0;
+}
+
 void addBatch(PackageOfBatchesOfGoods* package, BatchOfGoods* batch)
 {
 	int sum = convertDateToDays(batch->date);
@@ -81,7 +89,7 @@ char* getPackageAsCharArray(PackageOfBatchesOfGoods* package)
 
 	str = (char*)malloc(size_str * sizeof(char));
 
-	strcpy_s(str, size_str, "=====================\n");
+	strcpy_s(str, size_str, "\n=====================\n");
 	strcat_s(str, size_str, " ");
 	strcat_s(str, size_str, package->name);
 	strcat_s(str, size_str, "\n=====================");

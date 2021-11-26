@@ -16,6 +16,13 @@ struct Warehouse
 	int displayed_warehouse = 0;
 };
 
+void init(Warehouse* w)
+{
+	w->head = NULL;
+	w->warehouse_size = 0;
+	w->displayed_warehouse = 0;
+}
+
 //void init(NodeWithPachage *package)
 //{
 //	package->is_empty = true;
@@ -48,7 +55,9 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 
 		//init(node->package);
 
-		node->package->package_size = 0;
+		//node->package->package_size = 0;
+
+		init(node->package);
 
 		addBatch(node->package, batch);
 
@@ -59,9 +68,14 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 		warehouse->warehouse_size++;
 		warehouse->displayed_warehouse++;
 	}
-	else addBatch(node->package, batch);
+	else
+	{
+		addBatch(node->package, batch);
+	}
 
-	node->is_empty == false;
+	//node->is_empty == false;
+
+	node->is_empty = false;
 }
 
 float sellGoods(Warehouse *warehouse, char* name, int *quantity)

@@ -60,6 +60,8 @@ struct PackageOfBatchesOfGoods
 	int package_size = 0;
 };
 
+void init(PackageOfBatchesOfGoods* p);
+
 //void init(NodeWithBatch* node)
 //{
 //	node->batch = NULL;

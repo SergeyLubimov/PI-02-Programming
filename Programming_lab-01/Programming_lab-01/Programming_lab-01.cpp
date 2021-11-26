@@ -90,6 +90,12 @@ int main()
 
     shopB = (Shop*)malloc(sizeof(Shop));
 
+    init(&shopA);
+    init(shopB);
+
+    setNameOfShop(&shopA, "A");
+    setNameOfShop(shopB, "B");
+
     BatchOfGoods a1, a2, a3;
 
     BatchOfGoods *b1, *b2, *b3;
@@ -117,11 +123,11 @@ int main()
     setIdOfGood(b1, 398755);
     setPriceOfGoods(b1, 15);
     setQuantityOfGoods(b1, 8);
-    setDateOfBatch(&a1, "07.02.2019");
+    setDateOfBatch(b1, "07.02.2019");
 
-   // b2 = launchNewBatchForm();
+    b2 = launchNewBatchForm();
 
-   // b3 = launchNewBatchForm();
+    b3 = launchNewBatchForm();
 
     addBatch(&shopA, &a1);
     addBatch(&shopA, &a2);
@@ -132,12 +138,12 @@ int main()
     addBatch(shopB, &a3);
 
     addBatch(&shopA, b1);
-   /* addBatch(&shopA, b2);
-    addBatch(&shopA, b3);*/
+    addBatch(&shopA, b2);
+    addBatch(&shopA, b3);
 
     addBatch(shopB, b1);
-   /* addBatch(shopB, b2);
-    addBatch(shopB, b3);*/
+    addBatch(shopB, b2);
+    addBatch(shopB, b3);
 
     displayAssortment(shopA);
     displayAssortment(*shopB);    

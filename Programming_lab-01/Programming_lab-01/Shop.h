@@ -9,6 +9,14 @@ struct Shop
 	float cash = 0;
 };
 
+void init(Shop* sh)
+{
+	sh->name = NULL;
+	sh->warehouse;
+	init(&(sh->warehouse));
+	sh->cash = 0;
+}
+
 bool setNameOfShop(Shop *shop, char* name)
 {	
 	int size_str = strlen(name) + 1;
@@ -21,8 +29,20 @@ bool setNameOfShop(Shop *shop, char* name)
 
 		return true;
 	}
-	else false;
-	
+	else false;	
+}
+
+bool setNameOfShop(Shop* shop, const char s[])
+{
+	int size_str = strlen(s) + 1;
+	if (s != 0)
+	{
+		if (shop->name == 0) free(shop->name);
+		shop->name = (char*)malloc(size_str);
+		strcpy_s(shop->name, size_str, s);
+		return true;
+	}
+	return false;
 }
 
 void addBatch(Shop* shop, BatchOfGoods* batch)
@@ -52,7 +72,7 @@ void displayAssortment(Shop shop)
 {
 	NodeWithPachage* node = shop.warehouse.head;
 
-	std::cout << "\n\n* " << shop.name << std::endl;
+	std::cout << "\n\n* " << shop.name;
 
 	while (node != NULL)
 	{
