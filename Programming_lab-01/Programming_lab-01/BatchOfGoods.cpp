@@ -314,3 +314,11 @@ void deleteBatch(BatchOfGoods* batch)
 	free(batch->name);	
 	free(batch);
 }
+
+BatchOfGoods* cloneBarch(BatchOfGoods* batch)
+{
+	BatchOfGoods* b = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));	
+	*b = *batch;
+
+	return b;
+}

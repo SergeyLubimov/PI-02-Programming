@@ -19,4 +19,6 @@ void addBatch(Shop* shop, BatchOfGoods* batch);
 
 bool sellGoods(Shop* shop, char* name, int* q);
 
+bool sellGoods(Shop* shop, const char name[], int* q);
+
 void displayAssortment(Shop shop);

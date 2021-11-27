@@ -70,4 +70,32 @@ int main()
 
     displayAssortment(shopA);
     displayAssortment(*shopB); 
+
+    int q1 = 110;
+    int q2 = 1;
+
+    sellGoods(&shopA, "A", &q1);
+    sellGoods(&shopA, "B", &q2);
+
+    displayAssortment(shopA);
+
+    if (q1 > 0) 
+        cout << "\n\nThe product A is over. Missing " << q1 << '\n';
+
+    if (q2 > 0) 
+        cout << "\n\nThe product B is over. Missing " << q2 << '\n';
+
+    q1 = 110;
+    q2 = 1;
+
+    sellGoods(shopB, "A", &q1);
+    sellGoods(shopB, "B", &q2);
+
+    displayAssortment(*shopB);
+
+    if (q1 > 0)
+        cout << "\n\nThe product A is over. Missing " << q1 << '\n';
+
+    if (q2 > 0)
+        cout << "\n\nThe product B is over. Missing " << q2 << '\n';    
 }

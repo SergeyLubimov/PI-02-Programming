@@ -112,9 +112,8 @@ bool delNode(PackageOfBatchesOfGoods* package, NodeWithBatch* node)
 		else node->prev->next = node->next;
 		if (node == package->tail)
 			package->tail = node->prev;
-		else node->next->prev = node->prev;;
+		else node->next->prev = node->prev;
 
-		deleteBatch(node->batch);
 		free(node);
 
 		package->package_size--;

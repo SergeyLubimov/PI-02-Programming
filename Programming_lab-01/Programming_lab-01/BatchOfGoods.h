@@ -35,3 +35,5 @@ char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n);
 BatchOfGoods* launchNewBatchForm();
 
 void deleteBatch(BatchOfGoods* batch);
+
+BatchOfGoods* cloneBarch(BatchOfGoods* batch);
