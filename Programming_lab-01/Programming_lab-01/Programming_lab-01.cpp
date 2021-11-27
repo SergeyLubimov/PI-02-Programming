@@ -56,23 +56,23 @@ int main()
     addBatch(&shopA, &a2);
     addBatch(&shopA, &a3);
 
-    addBatch(shopB, &a1);
-    addBatch(shopB, &a2);
-    addBatch(shopB, &a3);
+    addBatch(shopB, cloneBarch(&a1));
+    addBatch(shopB, cloneBarch(&a2));
+    addBatch(shopB, cloneBarch(&a3));
 
     addBatch(&shopA, b1);
     addBatch(&shopA, b2);
     addBatch(&shopA, b3);
 
-    addBatch(shopB, b1);
-    addBatch(shopB, b2);
-    addBatch(shopB, b3);
+    addBatch(shopB, cloneBarch(b1));
+    addBatch(shopB, cloneBarch(b2));
+    addBatch(shopB, cloneBarch(b3));
 
     displayAssortment(shopA);
     displayAssortment(*shopB); 
 
     int q1 = 110;
-    int q2 = 1;
+    int q2 = 9;
 
     sellGoods(&shopA, "A", &q1);
     sellGoods(&shopA, "B", &q2);
@@ -86,7 +86,7 @@ int main()
         cout << "\n\nThe product B is over. Missing " << q2 << '\n';
 
     q1 = 110;
-    q2 = 1;
+    q2 = 9;
 
     sellGoods(shopB, "A", &q1);
     sellGoods(shopB, "B", &q2);

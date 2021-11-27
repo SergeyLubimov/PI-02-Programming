@@ -1,11 +1,2 @@
-﻿  BatchOfGoods.cpp
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(45,18): warning C4244: =: преобразование "int" в "float", возможна потеря данных
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(108,37): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(162,37): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
-  Warehouse.cpp
-  Создание кода...
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(49): warning C4715: setPriceOfGoods: значение возвращается не при всех путях выполнения
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(39): warning C4715: setIdOfGood: значение возвращается не при всех путях выполнения
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(16): warning C4715: setNameOfGoods: значение возвращается не при всех путях выполнения
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(59): warning C4715: setQuantityOfGoods: значение возвращается не при всех путях выполнения
+﻿  Programming_lab-01.cpp
   Programming_lab-01.vcxproj -> G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe

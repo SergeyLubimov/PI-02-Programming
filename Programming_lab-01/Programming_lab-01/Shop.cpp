@@ -38,7 +38,7 @@ bool setNameOfShop(Shop* shop, const char s[])
 
 void addBatch(Shop* shop, BatchOfGoods* batch)
 {	
-	addBatch(&shop->warehouse, cloneBarch(batch));
+	addBatch(&shop->warehouse, batch);
 }
 
 
