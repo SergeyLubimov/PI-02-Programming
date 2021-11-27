@@ -60,12 +60,12 @@ bool setQuantityOfGoods(BatchOfGoods *batch, int quantity)
 
 bool setDateOfBatch(BatchOfGoods *batch, char* str)
 {
-	return setDateAsCharArray(&(batch->date), str);
+	return batch->date.setDateAsCharArray(str);
 }
 
 bool setDateOfBatch(BatchOfGoods *batch, const char str[])
 {
-	return setDateAsCharArray(&(batch->date), str);
+	return batch->date.setDateAsCharArray(str);
 }
 
 char* getIdOfGoods(BatchOfGoods batch)
@@ -107,7 +107,7 @@ char* getBatchAsCharArray(BatchOfGoods batch, int n)
 	ID = getIdOfGoods(batch);
 	price = convertIntToCharArray(batch.price);
 	quantity = convertIntToCharArray(batch.quantity);
-	date = getDateAsCharArray(&(batch.date));
+	date = batch.date.getDateAsCharArray();
 
 	int str_size = 5 * (n + 2);
 
@@ -161,7 +161,7 @@ char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n)
 	ID = getIdOfGoods(batch);
 	price = convertIntToCharArray(batch.price);
 	quantity = convertIntToCharArray(batch.quantity);
-	date = getDateAsCharArray(&(batch.date));
+	date = batch.date.getDateAsCharArray();
 
 	int str_size = 5 * (n + 2) + 19;
 

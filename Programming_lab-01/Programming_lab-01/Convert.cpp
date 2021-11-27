@@ -50,7 +50,7 @@ char* convertIntToCharArray(int integer)
 
 int convertDateToDays(Date date)
 {
-	return date.year * 365 + date.month * (365 / 12) + date.day;
+	return date.getYear() * 365 + date.getMonht() * (365 / 12) + date.getDay();
 }
 
 int convertCharArrayToInt(char* str)

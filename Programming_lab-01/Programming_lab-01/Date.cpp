@@ -1,38 +1,60 @@
 #include "Date.h"
 
-bool setDay(Date *date, int day)
+Date::Date()
+{
+	day_ = 0;
+	month_ = 0;
+	year_ = 0;
+}
+
+int Date::getDay()
+{
+	return day_;
+}
+
+int Date::getMonht()
+{
+	return month_;
+}
+
+int Date::getYear()
+{
+	return year_;
+}
+
+bool Date::setDay(int day)
 {
 	if (day > 0 && day <= 31)
 	{
-		date->day = day;
+		day_ = day;
 		return true;
 	}
 	return false;
 }
-bool setMonht(Date *date, int month)
+bool Date::setMonht(int month)
 {
 	if (month > 0 && month <= 12)
 	{
-		date->month = month;
+		month_ = month;
 		return true;
 	}
 	return false;
 }
-bool setYear(Date *date, int year)
+bool Date::setYear(int year)
 {
 	if (year > 0 && year < 10000)
 	{
-		date->year = year;
+		year_ = year;
 		return true;
 	}
 	return false;
 }
-bool setDate(Date *date, int day, int month, int year)
+bool Date::setDate(int day, int month, int year)
 {
-	return setDay(date, day) && setMonht(date, month) && setYear(date, year);
+	return setDay(day) && setMonht(month) && setYear(year);
 }
 
-bool setDateAsCharArray(Date *date, char* str)
+bool Date::setDateAsCharArray(char* str)
 {
 	if (str != 0 && ((strlen(str) == 11 && str[10] == 0) || 
 		(strlen(str) == 10 && str[9] != 0)))
@@ -54,13 +76,13 @@ bool setDateAsCharArray(Date *date, char* str)
 			int year = (str[6] - '0') * 1000 + (str[7] - '0') * 100 +
 				        (str[8] - '0') * 10 + (str[9] - '0');
 
-			return setDate(date, day, month, year);
+			return setDate(day, month, year);
 		}		
 	}
 	return false;
 }
 
-bool setDateAsCharArray(Date *date, const char str[])
+bool Date::setDateAsCharArray(const char str[])
 {
 	if (str != 0 &&	((strlen(str) == 10 && str[10] == 0) ||
 		(strlen(str) == 9 && str[9] != 0)))
@@ -82,26 +104,26 @@ bool setDateAsCharArray(Date *date, const char str[])
 			int year = (str[6] - '0') * 1000 + (str[7] - '0') * 100 +
 				        (str[8] - '0') * 10 + (str[9] - '0');
 
-			return setDate(date, day, month, year);
+			return setDate(day, month, year);
 		}
 	}
 	return false;
 }
 
-char* getDateAsCharArray(Date *date)
+char* Date::getDateAsCharArray()
 {
-	char *str = (char*)malloc(11);
+	char* str = new char[11];
 
-	str[0] = int(date->day / 10) + '0';
-	str[1] = date->day % 10 + '0';
+	str[0] = int(day_ / 10) + '0';
+	str[1] = day_ % 10 + '0';
 	str[2] = '.';
-	str[3] = int(date->month / 10) + '0';
-	str[4] = date->month % 10 + '0';
+	str[3] = int(month_ / 10) + '0';
+	str[4] = month_ % 10 + '0';
 	str[5] = '.';
-	str[6] = int(date->year / 1000) + '0';
-	str[7] = int(date->year % 1000 / 100) + '0';
-	str[8] = int(date->year % 100 / 10) + '0';
-	str[9] = date->year % 10 + '0';
+	str[6] = int(year_ / 1000) + '0';
+	str[7] = int(year_ % 1000 / 100) + '0';
+	str[8] = int(year_ % 100 / 10) + '0';
+	str[9] = year_ % 10 + '0';
 	str[10] = '\0';
 
 	return str;
