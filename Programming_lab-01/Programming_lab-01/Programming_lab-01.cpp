@@ -16,8 +16,8 @@ int main()
     init(&shopA);
     init(shopB);
 
-    setNameOfShop(&shopA, "A");
-    setNameOfShop(shopB, "B");
+    setNameOfShop(&shopA, "Shop A");
+    setNameOfShop(shopB, "Shop B");
 
     BatchOfGoods a1, a2, a3;
 
@@ -70,4 +70,6 @@ int main()
 
     displayAssortment(shopA);
     displayAssortment(*shopB); 
+
+
 }
