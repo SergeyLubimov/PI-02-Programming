@@ -21,3 +21,5 @@ void init(Warehouse* w);
 void addBatch(Warehouse* warehouse, BatchOfGoods* batch);
 
 float sellGoods(Warehouse* warehouse, char* name, int* quantity);
+
+float sellGoods(Warehouse* warehouse, const char name[], int* quantity);

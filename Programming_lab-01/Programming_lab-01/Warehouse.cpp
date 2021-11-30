@@ -1,20 +1,6 @@
 
 #include "Warehouse.h"
 
-struct NodeWithPachage
-{
-	PackageOfBatchesOfGoods* package;
-	NodeWithPachage* next = NULL;
-	bool is_empty = true;
-};
-
-struct Warehouse
-{
-	NodeWithPachage* head = NULL;
-	int warehouse_size = 0;
-	int displayed_warehouse = 0;
-};
-
 void init(Warehouse* w)
 {
 	w->head = NULL;
@@ -55,6 +41,28 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 }
 
 float sellGoods(Warehouse* warehouse, char* name, int* quantity)
+{
+	NodeWithPachage* node = warehouse->head;
+
+	float sum = -1;
+
+	while (node != NULL && strcmp(name, node->package->name) != 0)
+		node = node->next;
+
+	if (node != NULL && node->is_empty == false)
+	{
+		sum = sellGoods(node->package, quantity);
+
+		if (node->package->package_size == 0)
+		{
+			node->is_empty = true;
+			warehouse->displayed_warehouse--;
+		}
+	}
+	return sum;
+}
+
+float sellGoods(Warehouse* warehouse, const char name[], int* quantity)
 {
 	NodeWithPachage* node = warehouse->head;
 
