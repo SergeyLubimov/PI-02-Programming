@@ -1,50 +1,57 @@
 
 #include "Shop.h"
 
-void init(Shop* sh)
+Shop::Shop()
 {
-	sh->cash = 0;
-	sh->warehouse.init();
-	sh->name = NULL;
+	cash_ = 0;
+	warehouse_.init();
+	name_ = NULL;
 }
 
-bool setNameOfShop(Shop* shop, char* name)
+void Shop::init()
+{
+	cash_ = 0;
+	warehouse_.init();
+	name_ = NULL;
+}
+
+bool Shop::setNameOfShop(char* name)
 {
 	int size_str = strlen(name) + 1;
 	if (name != 0)
 	{
-		if (shop->name == 0) free(shop->name);
+		if (name_ == 0) free(name_);
 
-		shop->name = (char*)malloc(size_str);////////////////////////////////////
-		strcpy_s(shop->name, size_str, name);
+		name_ = (char*)malloc(size_str);////////////////////////////////////
+		strcpy_s(name_, size_str, name);
 
 		return true;
 	}
 	else false;
 }
 
-bool setNameOfShop(Shop* shop, const char s[])
+bool Shop::setNameOfShop(const char s[])
 {
 	int size_str = strlen(s) + 1;
 	if (s != 0)
 	{
-		if (shop->name == 0) free(shop->name);
-		shop->name = (char*)malloc(size_str);//////////////////////////////////
-		strcpy_s(shop->name, size_str, s);
+		if (name_ == 0) free(name_);
+		name_ = (char*)malloc(size_str);//////////////////////////////////
+		strcpy_s(name_, size_str, s);
 		return true;
 	}
 	return false;
 }
 
-void addBatch(Shop* shop, BatchOfGoods* batch)
+void Shop::addBatch(BatchOfGoods* batch)
 {	
-	shop->warehouse.addBatch(batch);
+	warehouse_.addBatch(batch);
 }
 
 
-bool sellGoods(Shop* shop, char* name, int* q)
+bool Shop::sellGoods(char* name, int* q)
 {
-	NodeWithPachage* node = shop->warehouse.getHead();
+	NodeWithPachage* node = warehouse_.getHead();
 
 	bool ret = false;
 
@@ -53,29 +60,29 @@ bool sellGoods(Shop* shop, char* name, int* q)
 
 	if (node != NULL && node->is_empty == false)
 	{
-		shop->cash += node->package->sellGoods(q);
+		cash_ += node->package->sellGoods(q);
 		ret = true;
 	}
 	return ret;
 }
 
-bool sellGoods(Shop* shop, const char name[], int* q)
+bool Shop::sellGoods(const char name[], int* q)
 {
 	bool ret = false;
 
-	if (shop != NULL && *q > 0)
+	if (*q > 0)
 	{
-		shop->cash += shop->warehouse.sellGoods(name, q);
+		cash_ += warehouse_.sellGoods(name, q);
 		ret = true;
 	}
 	return ret;
 }
 
-void displayAssortment(Shop shop)
+void Shop::displayAssortment()
 {
-	NodeWithPachage* node = shop.warehouse.getHead();
+	NodeWithPachage* node = warehouse_.getHead();
 
-	std::cout << "\n\n*** " << shop.name << " ***\n" << "|cash: " << shop.cash;
+	std::cout << "\n\n*** " << name_ << " ***\n" << "|cash: " << cash_;
 
 	while (node != NULL)
 	{

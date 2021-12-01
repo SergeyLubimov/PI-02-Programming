@@ -13,11 +13,11 @@ int main()
 
     shopB = (Shop*)malloc(sizeof(Shop));
 
-    init(&shopA);
-    init(shopB);
+    shopA.init();
+    shopB->init();
 
-    setNameOfShop(&shopA, "Shop A");
-    setNameOfShop(shopB, "Shop B");
+    shopA.setNameOfShop("Shop A");
+    shopB->setNameOfShop("Shop B");
 
     BatchOfGoods a1, a2, a3;
 
@@ -58,32 +58,32 @@ int main()
     is_fullB2 = b2->launchNewBatchForm();    
     is_fullB3 = b3->launchNewBatchForm();
 
-    addBatch(&shopA, &a1);
-    addBatch(&shopA, &a2);
-    addBatch(&shopA, &a3);
+    shopA.addBatch(&a1);
+    shopA.addBatch(&a2);
+    shopA.addBatch(&a3);
 
-    addBatch(shopB, a1.cloneBarch());
-    addBatch(shopB, a2.cloneBarch());
-    addBatch(shopB, a3.cloneBarch());
+    shopB->addBatch(a1.cloneBarch());
+    shopB->addBatch(a2.cloneBarch());
+    shopB->addBatch(a3.cloneBarch());
 
-    addBatch(&shopA, b1);
-    if (is_fullB2) addBatch(&shopA, b2);
-    if (is_fullB3) addBatch(&shopA, b3);
+    shopA.addBatch(b1);
+    if (is_fullB2) shopA.addBatch(b2);
+    if (is_fullB3) shopA.addBatch(b3);
 
-    addBatch(shopB, b1->cloneBarch());
-    if (is_fullB2) addBatch(shopB, b2->cloneBarch());
-    if (is_fullB3) addBatch(shopB, b3->cloneBarch());
+    shopB->addBatch(b1->cloneBarch());
+    if (is_fullB2) shopB->addBatch(b2->cloneBarch());
+    if (is_fullB3) shopB->addBatch(b3->cloneBarch());
 
-    displayAssortment(shopA);
-    displayAssortment(*shopB); 
+    shopA.displayAssortment();
+    shopB->displayAssortment(); 
 
     int q1 = 110;
     int q2 = 9;
 
-    sellGoods(&shopA, "A", &q1);
-    sellGoods(&shopA, "B", &q2);
+    shopA.sellGoods("A", &q1);
+    shopA.sellGoods("B", &q2);
 
-    displayAssortment(shopA);
+    shopA.displayAssortment();
 
     if (q1 > 0) 
         cout << "\n\nThe product A is over. Missing " << q1 << '\n';
@@ -94,17 +94,14 @@ int main()
     q1 = 110;
     q2 = 9;
 
-    sellGoods(shopB, "A", &q1);
-    sellGoods(shopB, "B", &q2);
+    shopB->sellGoods("A", &q1);
+    shopB->sellGoods("B", &q2);
 
-    displayAssortment(*shopB);
+    shopB->displayAssortment();
 
     if (q1 > 0)
         cout << "\n\nThe product A is over. Missing " << q1 << '\n';
 
     if (q2 > 0)
         cout << "\n\nThe product B is over. Missing " << q2 << '\n';    
-
-
-
 }
