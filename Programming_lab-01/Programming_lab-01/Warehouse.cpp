@@ -1,17 +1,39 @@
 
 #include "Warehouse.h"
 
-void init(Warehouse* w)
+Warehouse::Warehouse()
 {
-	w->head = NULL;
-	w->warehouse_size = 0;
-	w->displayed_warehouse = 0;
+	head_ = NULL;
+	warehouse_size_ = 0;
+	displayed_warehouse_ = 0;
 }
 
-void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
+void Warehouse::init()
+{
+	head_ = NULL;
+	warehouse_size_ = 0;
+	displayed_warehouse_ = 0;
+}
+
+NodeWithPachage* Warehouse::getHead()
+{
+	return head_;
+}
+
+int Warehouse::getSize()
+{
+	return warehouse_size_;
+}
+
+int Warehouse::getDisplayedWarehouse()
+{
+	return displayed_warehouse_;
+}
+
+void Warehouse::addBatch(BatchOfGoods* batch)
 {
 	char* name = batch->getName();
-	NodeWithPachage* node = warehouse->head;
+	NodeWithPachage* node = head_;
 
 	while (node != NULL && strcmp(name, node->package->getName()) != 0)
 		node = node->next;
@@ -19,8 +41,8 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 	if (node == NULL)
 	{
 		node = (NodeWithPachage*)malloc(sizeof(NodeWithBatch));//////////////////////////
-		node->next = warehouse->head;
-		warehouse->head = node;
+		node->next = head_;
+		head_ = node;
 
 		node->package = new PackageOfBatchesOfGoods();
 
@@ -32,17 +54,17 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 		node->package->name = (char*)malloc(size);
 		strcpy_s(node->package->name, size, name);*/
 
-		warehouse->warehouse_size++;
-		warehouse->displayed_warehouse++;
+		warehouse_size_++;
+		displayed_warehouse_++;
 	}
 	else node->package->addBatch(batch);
 
 	node->is_empty = false;
 }
 
-float sellGoods(Warehouse* warehouse, char* name, int* quantity)
+float Warehouse::sellGoods(char* name, int* quantity)
 {
-	NodeWithPachage* node = warehouse->head;
+	NodeWithPachage* node = head_;
 
 	float sum = -1;
 
@@ -56,15 +78,15 @@ float sellGoods(Warehouse* warehouse, char* name, int* quantity)
 		if (node->package->getSize() == 0)
 		{
 			node->is_empty = true;
-			warehouse->displayed_warehouse--;
+			displayed_warehouse_--;
 		}
 	}
 	return sum;
 }
 
-float sellGoods(Warehouse* warehouse, const char name[], int* quantity)
+float Warehouse::sellGoods(const char name[], int* quantity)
 {
-	NodeWithPachage* node = warehouse->head;
+	NodeWithPachage* node = head_;
 
 	float sum = -1;
 
@@ -78,7 +100,7 @@ float sellGoods(Warehouse* warehouse, const char name[], int* quantity)
 		if (node->package->getSize() == 0)
 		{
 			node->is_empty = true;
-			warehouse->displayed_warehouse--;
+			displayed_warehouse_--;
 		}
 	}
 	return sum;

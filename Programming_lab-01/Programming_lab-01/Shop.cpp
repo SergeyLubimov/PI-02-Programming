@@ -4,7 +4,7 @@
 void init(Shop* sh)
 {
 	sh->cash = 0;
-	init(&sh->warehouse);
+	sh->warehouse.init();
 	sh->name = NULL;
 }
 
@@ -38,13 +38,13 @@ bool setNameOfShop(Shop* shop, const char s[])
 
 void addBatch(Shop* shop, BatchOfGoods* batch)
 {	
-	addBatch(&shop->warehouse, batch);
+	shop->warehouse.addBatch(batch);
 }
 
 
 bool sellGoods(Shop* shop, char* name, int* q)
 {
-	NodeWithPachage* node = shop->warehouse.head;
+	NodeWithPachage* node = shop->warehouse.getHead();
 
 	bool ret = false;
 
@@ -65,7 +65,7 @@ bool sellGoods(Shop* shop, const char name[], int* q)
 
 	if (shop != NULL && *q > 0)
 	{
-		shop->cash += sellGoods(&shop->warehouse, name, q);
+		shop->cash += shop->warehouse.sellGoods(name, q);
 		ret = true;
 	}
 	return ret;
@@ -73,7 +73,7 @@ bool sellGoods(Shop* shop, const char name[], int* q)
 
 void displayAssortment(Shop shop)
 {
-	NodeWithPachage* node = shop.warehouse.head;
+	NodeWithPachage* node = shop.warehouse.getHead();
 
 	std::cout << "\n\n*** " << shop.name << " ***\n" << "|cash: " << shop.cash;
 
