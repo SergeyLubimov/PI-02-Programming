@@ -1,3 +1,16 @@
-﻿  Convert.cpp
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Convert.cpp(14,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
-  Programming_lab-01.vcxproj -> G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe
+﻿  BatchOfGoods.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(53,12): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(136,32): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(190,32): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  PachageOfBatchesOfGoods.cpp
+  Programming_lab-01.cpp
+  Shop.cpp
+  Warehouse.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Warehouse.cpp(13,22): error C2039: "name": не является членом "BatchOfGoods".
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.h(6): message : см. объявление "BatchOfGoods"
+  Создание кода...
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(24): warning C4715: setNameOfShop: значение возвращается не при всех путях выполнения
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(47): warning C4715: BatchOfGoods::setIdOfGood: значение возвращается не при всех путях выполнения
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(24): warning C4715: BatchOfGoods::setNameOfGoods: значение возвращается не при всех путях выполнения
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(57): warning C4715: BatchOfGoods::setPriceOfGoods: значение возвращается не при всех путях выполнения
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(67): warning C4715: BatchOfGoods::setQuantityOfGoods: значение возвращается не при всех путях выполнения

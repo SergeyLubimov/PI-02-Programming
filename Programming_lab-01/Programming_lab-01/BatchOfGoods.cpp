@@ -1,84 +1,117 @@
 #include "BatchOfGoods.h"
 
-bool setNameOfGoods(BatchOfGoods *batch, char* s)
+BatchOfGoods::BatchOfGoods()
+{
+	name_ = NULL;
+	int ID_ = 0;
+	float price_ = 0;
+	int quantity_ = 0;
+}
+
+bool BatchOfGoods::setNameOfGoods(char* s)
 {
 	int size_str = strlen(s) + 1;
 	if (s != 0)
 	{
-		if (batch->name == 0) free(batch->name);
+		if (name_ == 0) free(name_);
 
-		batch->name = (char*)malloc(size_str);
-		strcpy_s(batch->name, size_str, s);
+		name_ = (char*)malloc(size_str);//////////////////////////////////////
+		strcpy_s(name_, size_str, s);
 
 		return true;
 	}
 	else false;
 }
 
-bool setNameOfGoods(BatchOfGoods *batch, const char s[])
+bool BatchOfGoods::setNameOfGoods(const char s[])
 {
 	int size_str = strlen(s) + 1;
 	if (s != 0)
 	{
-		if (batch->name == 0) free(batch->name);
-		batch->name = (char*)malloc(size_str);
-		strcpy_s(batch->name, size_str, s);
+		if (name_ == 0) free(name_);
+		name_ = (char*)malloc(size_str);//////////////////////////////////////
+		strcpy_s(name_, size_str, s);
 		return true;
 	}
 	return false;
 }
 
-bool setIdOfGood(BatchOfGoods *batch, int id)
+bool BatchOfGoods::setIdOfGood(int id)
 {
 	if (id >= 0 && id < 100000000)
 	{
-		batch->ID = id;
+		ID_ = id;
 		return true;
 	}
 	else false;
 }
 
-bool setPriceOfGoods(BatchOfGoods *batch, int price)
+bool BatchOfGoods::setPriceOfGoods(int price)
 {
 	if (price >= 0)
 	{
-		batch->price = price;
+		price_ = price;
 		return true;
 	}
 	else false;
 }
 
-bool setQuantityOfGoods(BatchOfGoods *batch, int quantity)
+bool BatchOfGoods::setQuantityOfGoods(int quantity)
 {
 	if (quantity >= 0)
 	{
-		batch->quantity = quantity;
+		quantity_ = quantity;
 		return true;
 	}
 	else false;
 }
 
-bool setDateOfBatch(BatchOfGoods *batch, char* str)
+bool BatchOfGoods::setDateOfBatch(char* str)
 {
-	return batch->date.setDateAsCharArray(str);
+	return date_.setDateAsCharArray(str);
 }
 
-bool setDateOfBatch(BatchOfGoods *batch, const char str[])
+bool BatchOfGoods::setDateOfBatch(const char str[])
 {
-	return batch->date.setDateAsCharArray(str);
+	return date_.setDateAsCharArray(str);
 }
 
-char* getIdOfGoods(BatchOfGoods batch)
+char* BatchOfGoods::getName()
+{
+	return name_;
+}
+
+int BatchOfGoods::getID()
+{
+	return ID_;
+}
+
+float BatchOfGoods::getPrice()
+{
+	return price_;
+}
+
+int BatchOfGoods::getQuantity()
+{
+	return quantity_;
+}
+
+Date BatchOfGoods::getDate()
+{
+	return date_;
+}
+
+char* BatchOfGoods::getIdOfGoodsAsCharArray()
 {
 	char *str = (char*)malloc(9);
 	str[8] = '\0';
 	char* str0;
 	char* str_id;
 
-	str_id = convertIntToCharArray(batch.ID);
+	str_id = convertIntToCharArray(ID_);
 
 	int n = 8 - strlen(str_id);
-	str0 = (char*)malloc(n + 1);
+	str0 = (char*)malloc(n + 1);///////////////////////////////////////////
 	str0[n] = '\0';
 
 	int i = 0;
@@ -93,9 +126,9 @@ char* getIdOfGoods(BatchOfGoods batch)
 	return str;
 }
 
-char* getBatchAsCharArray(BatchOfGoods batch, int n)
+char* BatchOfGoods::getBatchAsCharArray(int n)
 {
-	char* indent = (char*)malloc(n + 2);
+	char* indent = (char*)malloc(n + 2);///////////////////////////////
 
 	indent[0] = '\n';
 	for (int i = 1; i <= n; i++) indent[i] = ' ';
@@ -103,11 +136,11 @@ char* getBatchAsCharArray(BatchOfGoods batch, int n)
 
 	char* name, * ID, * price, * quantity, * date;
 
-	name = batch.name;
-	ID = getIdOfGoods(batch);
-	price = convertIntToCharArray(batch.price);
-	quantity = convertIntToCharArray(batch.quantity);
-	date = batch.date.getDateAsCharArray();
+	name = name_;
+	ID = getIdOfGoodsAsCharArray();
+	price = convertIntToCharArray(price_);
+	quantity = convertIntToCharArray(quantity_);
+	date = date_.getDateAsCharArray();
 
 	int str_size = 5 * (n + 2);
 
@@ -117,7 +150,7 @@ char* getBatchAsCharArray(BatchOfGoods batch, int n)
 	str_size += strlen("Quantity: ") + strlen(quantity);
 	str_size += strlen("Date: ") + strlen(date) + 10;
 
-	char* str = (char*)malloc(str_size);
+	char* str = (char*)malloc(str_size);/////////////////////////////////////
 
 	strcpy_s(str, str_size, indent);
 	strcat_s(str, str_size, "Name: ");
@@ -148,9 +181,9 @@ char* getBatchAsCharArray(BatchOfGoods batch, int n)
 	return str;
 }
 
-char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n)
+char* BatchOfGoods::getBatchAsCharArray_WithoutName(int n)
 {
-	char* indent = (char*)malloc(n + 2);
+	char* indent = (char*)malloc(n + 2);/////////////////////////////////
 
 	indent[0] = '\n';
 	for (int i = 1; i <= n; i++) indent[i] = ' ';
@@ -158,10 +191,10 @@ char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n)
 
 	char * ID, * price, * quantity, * date;
 
-	ID = getIdOfGoods(batch);
-	price = convertIntToCharArray(batch.price);
-	quantity = convertIntToCharArray(batch.quantity);
-	date = batch.date.getDateAsCharArray();
+	ID = getIdOfGoodsAsCharArray();
+	price = convertIntToCharArray(price_);
+	quantity = convertIntToCharArray(quantity_);
+	date = date_.getDateAsCharArray();
 
 	int str_size = 5 * (n + 2) + 19;
 
@@ -170,7 +203,7 @@ char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n)
 	str_size += strlen("| Quantity: ") + strlen(quantity);
 	str_size += strlen("| Date: ") + strlen(date) + 10;
 
-	char* str = (char*)malloc(str_size);
+	char* str = (char*)malloc(str_size);///////////////////////////////////////////
 
 	strcpy_s(str, str_size, indent);
 	strcat_s(str, str_size, "| ID: ");
@@ -200,9 +233,25 @@ char* getBatchAsCharArray_WithoutName(BatchOfGoods batch, int n)
 	return str;
 }
 
-BatchOfGoods* launchNewBatchForm()
+int BatchOfGoods::reduceQuantityOfGoods()
 {
-	BatchOfGoods* batch = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
+	return quantity_--;
+}
+
+int BatchOfGoods::reduceQuantityOfGoods(int n)
+{
+	quantity_ -= n;
+	return quantity_;
+}
+
+void BatchOfGoods::resetQuantityOfGoods()
+{
+	quantity_ = 0;
+}
+
+bool BatchOfGoods::launchNewBatchForm()
+{
+	//BatchOfGoods* batch = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));//////////////////////////////
 
 	char command[100];
 	bool is_right[5];
@@ -256,30 +305,30 @@ BatchOfGoods* launchNewBatchForm()
 		{
 		case 0:
 		{
-			is_right[i] = setNameOfGoods(batch, command);
+			is_right[i] = setNameOfGoods(command);
 			break;
 		}
 		case 1:
 		{
 			is_right[i] = checkWhetherInt(command) &&
-				setIdOfGood(batch, convertCharArrayToInt(command));
+				setIdOfGood(convertCharArrayToInt(command));
 			break;
 		}
 		case 2:
 		{
 			is_right[i] = checkWhetherInt(command) &&
-				setPriceOfGoods(batch, convertCharArrayToInt(command));
+				setPriceOfGoods(convertCharArrayToInt(command));
 			break;
 		}
 		case 3:
 		{
 			is_right[i] = checkWhetherInt(command) &&
-				setQuantityOfGoods(batch, convertCharArrayToInt(command));
+				setQuantityOfGoods(convertCharArrayToInt(command));
 			break;
 		}
 		case 4:
 		{
-			is_right[i] = setDateOfBatch(batch, command);
+			is_right[i] = setDateOfBatch(command);
 			break;
 		}
 		default: break;
@@ -293,7 +342,7 @@ BatchOfGoods* launchNewBatchForm()
 		is_right[2] && is_right[3] && is_right[4])
 	{
 		std::cout << "\n\nBatch:\n" <<
-			getBatchAsCharArray(*batch, 2) << "\n\nIs it right?(y/n)\n";
+			getBatchAsCharArray(2) << "\n\nIs it right?(y/n)\n";
 		char c;
 		{
 			std::cin >> c;
@@ -302,23 +351,21 @@ BatchOfGoods* launchNewBatchForm()
 
 		if (c == 'y')
 		{
-			return batch;
+			return true;
 		}
-	}
-	deleteBatch(batch);
-	return NULL;
+	}	
+	return false;
 }
 
-void deleteBatch(BatchOfGoods* batch)
+void BatchOfGoods::deleteBatch()
 {
-	free(batch->name);	
-	free(batch);
+	free(name_);	
+	free(this);
 }
 
-BatchOfGoods* cloneBarch(BatchOfGoods* batch)
+BatchOfGoods* BatchOfGoods::cloneBarch()
 {
-	BatchOfGoods* b = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));	
-	*b = *batch;
-
+	BatchOfGoods* b = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));/////////////////////////	
+	*b = *this;
 	return b;
 }

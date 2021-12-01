@@ -10,7 +10,7 @@ void init(Warehouse* w)
 
 void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 {
-	char* name = batch->name;
+	char* name = batch->getName();
 	NodeWithPachage* node = warehouse->head;
 
 	while (node != NULL && strcmp(name, node->package->name) != 0)

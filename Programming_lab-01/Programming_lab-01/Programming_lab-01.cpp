@@ -23,50 +23,55 @@ int main()
 
     BatchOfGoods *b1, *b2, *b3;
 
-    setNameOfGoods(&a1, "A");
-    setIdOfGood(&a1, 2256);
-    setPriceOfGoods(&a1, 150);
-    setQuantityOfGoods(&a1, 16);
-    setDateOfBatch(&a1, "11.01.1996");
+    a1.setNameOfGoods("A");
+    a1.setIdOfGood(2256);
+    a1.setPriceOfGoods(150);
+    a1.setQuantityOfGoods(16);
+    a1.setDateOfBatch("11.01.1996");
 
-    setNameOfGoods(&a2, "A");
-    setIdOfGood(&a2, 1200564);
-    setPriceOfGoods(&a2, 178);
-    setQuantityOfGoods(&a2, 70);
-    setDateOfBatch(&a2, "11.01.2008");
+    a2.setNameOfGoods("A");
+    a2.setIdOfGood(1200564);
+    a2.setPriceOfGoods(178);
+    a2.setQuantityOfGoods(70);
+    a2.setDateOfBatch("11.01.2008");
 
-    setNameOfGoods(&a3, "A");
-    setIdOfGood(&a3, 420751);
-    setPriceOfGoods(&a3, 73);
-    setQuantityOfGoods(&a3, 16);
-    setDateOfBatch(&a3, "01.11.2008");
+    a3.setNameOfGoods("A");
+    a3.setIdOfGood(420751);
+    a3.setPriceOfGoods(73);
+    a3.setQuantityOfGoods(16);
+    a3.setDateOfBatch("01.11.2008");
 
-    b1 = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));
-    setNameOfGoods(b1, "B");
-    setIdOfGood(b1, 398755);
-    setPriceOfGoods(b1, 15);
-    setQuantityOfGoods(b1, 8);
-    setDateOfBatch(b1, "07.02.2019");
+    b1 = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));/////////////////////////////////
+    b1->setNameOfGoods("B");
+    b1->setIdOfGood(398755);
+    b1->setPriceOfGoods(15);
+    b1->setQuantityOfGoods(8);
+    b1->setDateOfBatch("07.02.2019");
 
-    b2 = launchNewBatchForm();
 
-    b3 = launchNewBatchForm();
+    b2 = new BatchOfGoods();
+    b3 = new BatchOfGoods();
+
+    bool is_fullB2, is_fullB3;
+
+    is_fullB2 = b2->launchNewBatchForm();    
+    is_fullB3 = b3->launchNewBatchForm();
 
     addBatch(&shopA, &a1);
     addBatch(&shopA, &a2);
     addBatch(&shopA, &a3);
 
-    addBatch(shopB, cloneBarch(&a1));
-    addBatch(shopB, cloneBarch(&a2));
-    addBatch(shopB, cloneBarch(&a3));
+    addBatch(shopB, a1.cloneBarch());
+    addBatch(shopB, a2.cloneBarch());
+    addBatch(shopB, a3.cloneBarch());
 
     addBatch(&shopA, b1);
-    addBatch(&shopA, b2);
-    addBatch(&shopA, b3);
+    if (is_fullB2) addBatch(&shopA, b2);
+    if (is_fullB3) addBatch(&shopA, b3);
 
-    addBatch(shopB, cloneBarch(b1));
-    addBatch(shopB, cloneBarch(b2));
-    addBatch(shopB, cloneBarch(b3));
+    addBatch(shopB, b1->cloneBarch());
+    if (is_fullB2) addBatch(shopB, b2->cloneBarch());
+    if (is_fullB3) addBatch(shopB, b3->cloneBarch());
 
     displayAssortment(shopA);
     displayAssortment(*shopB); 
