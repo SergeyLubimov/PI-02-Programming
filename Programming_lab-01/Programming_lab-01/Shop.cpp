@@ -15,7 +15,7 @@ bool setNameOfShop(Shop* shop, char* name)
 	{
 		if (shop->name == 0) free(shop->name);
 
-		shop->name = (char*)malloc(size_str);
+		shop->name = (char*)malloc(size_str);////////////////////////////////////
 		strcpy_s(shop->name, size_str, name);
 
 		return true;
@@ -29,7 +29,7 @@ bool setNameOfShop(Shop* shop, const char s[])
 	if (s != 0)
 	{
 		if (shop->name == 0) free(shop->name);
-		shop->name = (char*)malloc(size_str);
+		shop->name = (char*)malloc(size_str);//////////////////////////////////
 		strcpy_s(shop->name, size_str, s);
 		return true;
 	}
@@ -48,12 +48,12 @@ bool sellGoods(Shop* shop, char* name, int* q)
 
 	bool ret = false;
 
-	while (node != NULL && strcmp(node->package->name, name) != 0)
+	while (node != NULL && strcmp(node->package->getName(), name) != 0)
 		node = node->next;
 
 	if (node != NULL && node->is_empty == false)
 	{
-		shop->cash += sellGoods(node->package, q);
+		shop->cash += node->package->sellGoods(q);
 		ret = true;
 	}
 	return ret;
@@ -80,7 +80,7 @@ void displayAssortment(Shop shop)
 	while (node != NULL)
 	{
 		if (node->is_empty == false)
-			std::cout << getPackageAsCharArray(node->package);		
+			std::cout << node->package->getPackageAsCharArray();
 		node = node->next;
 	}
 }

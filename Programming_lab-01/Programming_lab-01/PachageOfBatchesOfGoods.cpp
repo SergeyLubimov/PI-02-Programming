@@ -25,7 +25,7 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 	}
 	else
 	{
-		if (head_->sumDays >= sum)
+		if (head_->sumDays >= sum)//////////////////////////
 		{
 			node->next = head_;
 			head_->prev = node;
@@ -58,22 +58,32 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 	package_size_++;
 }
 
-void PackageOfBatchesOfGoods::setNameOfPackage(PackageOfBatchesOfGoods* p, char* name)
+void PackageOfBatchesOfGoods::setNameOfPackage(char* name)
 {
 	int size = strlen(name) + 1;
-	p->name = (char*)malloc(size);
-	strcpy_s(p->name, size, name);
+	name_ = (char*)malloc(size);/////////////////////////////////////////////////
+	strcpy_s(name_, size, name);
 }
 
-char* PackageOfBatchesOfGoods::getPackageAsCharArray(PackageOfBatchesOfGoods* package)
+char* PackageOfBatchesOfGoods::getName()
 {
-	int n = package->package_size;
+	return name_;
+}
 
-	char** lines = (char**)malloc(n * sizeof(char*));
+int PackageOfBatchesOfGoods::getSize()
+{
+	return package_size_;
+}
+
+char* PackageOfBatchesOfGoods::getPackageAsCharArray()
+{
+	int n = package_size_;
+
+	char** lines = (char**)malloc(n * sizeof(char*));//////////////////////////////////
 	char* str;
-	int size_str = 2 * 22 + strlen(package->name) + 12;
+	int size_str = 2 * 22 + strlen(name_) + 12;
 
-	NodeWithBatch* node = package->head;
+	NodeWithBatch* node = head_;
 	for (int i = 0; i < n; i++)
 	{
 		lines[i] = node->batch->getBatchAsCharArray_WithoutName(3);
@@ -81,11 +91,11 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray(PackageOfBatchesOfGoods* pa
 		node = node->next;
 	}
 
-	str = (char*)malloc(size_str * sizeof(char));
+	str = (char*)malloc(size_str * sizeof(char));//////////////////////////////////////////
 
 	strcpy_s(str, size_str, "\n=====================\n");
 	strcat_s(str, size_str, " ");
-	strcat_s(str, size_str, package->name);
+	strcat_s(str, size_str, name_);
 	strcat_s(str, size_str, "\n=====================");
 
 	for (int i = 0; i < n; i++)
@@ -97,39 +107,50 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray(PackageOfBatchesOfGoods* pa
 	return str;
 }
 
-bool PackageOfBatchesOfGoods::delNode(PackageOfBatchesOfGoods* package, NodeWithBatch* node)
+int PackageOfBatchesOfGoods::reducePackageSize(int n)
+{
+	package_size_ -= n;
+	return package_size_;
+}
+
+void PackageOfBatchesOfGoods::resetPackageSize()
+{
+	package_size_ = 0;
+}
+
+bool PackageOfBatchesOfGoods::delNode(NodeWithBatch* node)
 {
 	if (node != NULL)
 	{
-		if (node == package->head)
-			package->head = node->next;
+		if (node == head_)
+			head_ = node->next;
 		else node->prev->next = node->next;
-		if (node == package->tail)
-			package->tail = node->prev;
+		if (node == tail_)
+			tail_ = node->prev;
 		else node->next->prev = node->prev;
 
 		free(node);
 
-		package->package_size--;
+		package_size_--;
 
 		return true;
 	}
 	else return false;
 }
 
-NodeWithBatch* PackageOfBatchesOfGoods::findNode(PackageOfBatchesOfGoods* package, int id)
+NodeWithBatch* PackageOfBatchesOfGoods::findNode(int id)
 {
 	NodeWithBatch* node = NULL;
-	NodeWithBatch* current = package->head;
+	NodeWithBatch* current = head_;
 
 	while (current != NULL && node != NULL)
 		if (current->batch->getID() == id) node = current;
 	return node;
 }
 
-float PackageOfBatchesOfGoods::sellProduct(PackageOfBatchesOfGoods* package, int id)
+float PackageOfBatchesOfGoods::sellProduct(int id)
 {
-	NodeWithBatch* node = findNode(package, id);
+	NodeWithBatch* node = findNode(id);
 
 	float sum = 0;
 
@@ -137,7 +158,7 @@ float PackageOfBatchesOfGoods::sellProduct(PackageOfBatchesOfGoods* package, int
 	{
 		node->batch->reduceQuantityOfGoods(1);
 		sum = node->batch->getPrice();
-		if (node->batch->getQuantity() == 0) delNode(package, node);
+		if (node->batch->getQuantity() == 0) delNode(node);
 	}
 	return sum;
 }
@@ -165,11 +186,11 @@ float PackageOfBatchesOfGoods::sellGoods(NodeWithBatch* node, int* quantity)
 	return sum;
 }
 
-float PackageOfBatchesOfGoods::sellGoods(PackageOfBatchesOfGoods* package, int* quantity)
+float PackageOfBatchesOfGoods::sellGoods(int* quantity)
 {
 	float sum = 0;
 
-	NodeWithBatch* node = package->head;
+	NodeWithBatch* node = head_;
 	NodeWithBatch* buff;
 
 	while (node != NULL && *quantity > 0)
@@ -180,16 +201,16 @@ float PackageOfBatchesOfGoods::sellGoods(PackageOfBatchesOfGoods* package, int* 
 		{
 			buff = node;
 			node = node->next;
-			delNode(package, buff);
+			delNode(buff);
 		}
 		else node = node->next;
 	}
 	return sum;
 }
 
-int PackageOfBatchesOfGoods::countGoods(PackageOfBatchesOfGoods* p)
+int PackageOfBatchesOfGoods::countGoods()
 {
-	NodeWithBatch* node = p->head;
+	NodeWithBatch* node = head_;
 
 	int count = 0;
 	while (node != NULL)
@@ -200,10 +221,10 @@ int PackageOfBatchesOfGoods::countGoods(PackageOfBatchesOfGoods* p)
 	return count;
 }
 
-void PackageOfBatchesOfGoods::printPackageAsCharArray(PackageOfBatchesOfGoods* package)
+void PackageOfBatchesOfGoods::printPackageAsCharArray()
 {
-	int n = package->package_size;
-	NodeWithBatch* current = package->head;
+	int n = package_size_;
+	NodeWithBatch* current = head_;
 	for (int i = 0; i < n; i++)
 	{
 		std::cout << current->batch->getBatchAsCharArray(0) << std::endl;

@@ -23,27 +23,36 @@ private:
 	int package_size_;
 
 public:
-	void init(PackageOfBatchesOfGoods* p);
 
-	void addBatch(PackageOfBatchesOfGoods* package, BatchOfGoods* batch);
+	PackageOfBatchesOfGoods();
 
-	void setNameOfPackage(PackageOfBatchesOfGoods* p, char* name);
+	void addBatch(BatchOfGoods* batch);
 
-	char* getPackageAsCharArray(PackageOfBatchesOfGoods* package);
+	void setNameOfPackage(char* name);
 
-	bool delNode(PackageOfBatchesOfGoods* package, NodeWithBatch* node);
+	char* getName();
 
-	NodeWithBatch* findNode(PackageOfBatchesOfGoods* package, int id);
+	int getSize();
 
-	float sellProduct(PackageOfBatchesOfGoods* package, int id);
+	char* getPackageAsCharArray();
+
+	int reducePackageSize(int n);
+
+	void resetPackageSize();
+
+	bool delNode(NodeWithBatch* node);
+
+	NodeWithBatch* findNode(int id);
+
+	float sellProduct(int id);
 
 	float sellGoods(NodeWithBatch* node, int* quantity);
 
-	float sellGoods(PackageOfBatchesOfGoods* package, int* quantity);
+	float sellGoods(int* quantity);
 
-	int countGoods(PackageOfBatchesOfGoods* p);
+	int countGoods();
 
-	void printPackageAsCharArray(PackageOfBatchesOfGoods* package);
+	void printPackageAsCharArray();
 };
 
 //struct PackageOfBatchesOfGoods

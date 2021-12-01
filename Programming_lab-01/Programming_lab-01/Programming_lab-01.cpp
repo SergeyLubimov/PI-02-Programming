@@ -52,7 +52,8 @@ int main()
     b2 = new BatchOfGoods();
     b3 = new BatchOfGoods();
 
-    bool is_fullB2, is_fullB3;
+    bool is_fullB2 = false;
+    bool is_fullB3 = false;
 
     is_fullB2 = b2->launchNewBatchForm();    
     is_fullB3 = b3->launchNewBatchForm();

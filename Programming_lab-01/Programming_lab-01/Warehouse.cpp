@@ -13,29 +13,29 @@ void addBatch(Warehouse* warehouse, BatchOfGoods* batch)
 	char* name = batch->getName();
 	NodeWithPachage* node = warehouse->head;
 
-	while (node != NULL && strcmp(name, node->package->name) != 0)
+	while (node != NULL && strcmp(name, node->package->getName()) != 0)
 		node = node->next;
 
 	if (node == NULL)
 	{
-		node = (NodeWithPachage*)malloc(sizeof(NodeWithBatch));
+		node = (NodeWithPachage*)malloc(sizeof(NodeWithBatch));//////////////////////////
 		node->next = warehouse->head;
 		warehouse->head = node;
 
-		node->package = (PackageOfBatchesOfGoods*)malloc(sizeof(PackageOfBatchesOfGoods));
+		node->package = new PackageOfBatchesOfGoods();
 
-		init(node->package);
+		node->package->addBatch(batch);
 
-		addBatch(node->package, batch);
+		node->package->setNameOfPackage(name);
 
-		int size = strlen(name) + 1;
+		/*int size = strlen(name) + 1;
 		node->package->name = (char*)malloc(size);
-		strcpy_s(node->package->name, size, name);
+		strcpy_s(node->package->name, size, name);*/
 
 		warehouse->warehouse_size++;
 		warehouse->displayed_warehouse++;
 	}
-	else addBatch(node->package, batch);
+	else node->package->addBatch(batch);
 
 	node->is_empty = false;
 }
@@ -46,14 +46,14 @@ float sellGoods(Warehouse* warehouse, char* name, int* quantity)
 
 	float sum = -1;
 
-	while (node != NULL && strcmp(name, node->package->name) != 0)
+	while (node != NULL && strcmp(name, node->package->getName()) != 0)
 		node = node->next;
 
 	if (node != NULL && node->is_empty == false)
 	{
-		sum = sellGoods(node->package, quantity);
+		sum = node->package->sellGoods(quantity);
 
-		if (node->package->package_size == 0)
+		if (node->package->getSize() == 0)
 		{
 			node->is_empty = true;
 			warehouse->displayed_warehouse--;
@@ -68,14 +68,14 @@ float sellGoods(Warehouse* warehouse, const char name[], int* quantity)
 
 	float sum = -1;
 
-	while (node != NULL && strcmp(name, node->package->name) != 0)
+	while (node != NULL && strcmp(name, node->package->getName()) != 0)
 		node = node->next;
 
 	if (node != NULL && node->is_empty == false)
 	{
-		sum = sellGoods(node->package, quantity);
+		sum = node->package->sellGoods(quantity);
 
-		if (node->package->package_size == 0)
+		if (node->package->getSize() == 0)
 		{
 			node->is_empty = true;
 			warehouse->displayed_warehouse--;
