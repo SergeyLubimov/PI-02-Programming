@@ -11,7 +11,7 @@ int main()
     Shop shopA;
     Shop *shopB;
 
-    shopB = (Shop*)malloc(sizeof(Shop));
+    shopB = new Shop();
 
     shopA.init();
     shopB->init();

@@ -40,7 +40,7 @@ void Warehouse::addBatch(BatchOfGoods* batch)
 
 	if (node == NULL)
 	{
-		node = (NodeWithPachage*)malloc(sizeof(NodeWithBatch));//////////////////////////
+		node = new NodeWithPachage();
 		node->next = head_;
 		head_ = node;
 
@@ -49,10 +49,6 @@ void Warehouse::addBatch(BatchOfGoods* batch)
 		node->package->addBatch(batch);
 
 		node->package->setNameOfPackage(name);
-
-		/*int size = strlen(name) + 1;
-		node->package->name = (char*)malloc(size);
-		strcpy_s(node->package->name, size, name);*/
 
 		warehouse_size_++;
 		displayed_warehouse_++;

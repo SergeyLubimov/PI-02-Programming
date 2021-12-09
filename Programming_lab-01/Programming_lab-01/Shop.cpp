@@ -20,9 +20,9 @@ bool Shop::setNameOfShop(char* name)
 	int size_str = strlen(name) + 1;
 	if (name != 0)
 	{
-		if (name_ == 0) free(name_);
+		if (name_ == 0) delete name_;
 
-		name_ = (char*)malloc(size_str);////////////////////////////////////
+		name_ = new char[size_str];
 		strcpy_s(name_, size_str, name);
 
 		return true;
@@ -35,8 +35,9 @@ bool Shop::setNameOfShop(const char s[])
 	int size_str = strlen(s) + 1;
 	if (s != 0)
 	{
-		if (name_ == 0) free(name_);
-		name_ = (char*)malloc(size_str);//////////////////////////////////
+		if (name_ == 0) delete name_;
+
+		name_ = new char[size_str];
 		strcpy_s(name_, size_str, s);
 		return true;
 	}
@@ -47,7 +48,6 @@ void Shop::addBatch(BatchOfGoods* batch)
 {	
 	warehouse_.addBatch(batch);
 }
-
 
 bool Shop::sellGoods(char* name, int* q)
 {

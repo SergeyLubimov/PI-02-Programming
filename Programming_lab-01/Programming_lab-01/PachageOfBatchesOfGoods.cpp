@@ -13,7 +13,7 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 {
 	int sum = convertDateToDays(batch->getDate());
 
-	NodeWithBatch* node = (NodeWithBatch*)malloc(sizeof(NodeWithBatch));/////////////////////////////
+	NodeWithBatch* node = new NodeWithBatch();
 
 	node->batch = batch;
 	node->sumDays = sum;
@@ -25,7 +25,7 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 	}
 	else
 	{
-		if (head_->sumDays >= sum)//////////////////////////
+		if (head_->sumDays >= sum)
 		{
 			node->next = head_;
 			head_->prev = node;
@@ -61,7 +61,8 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 void PackageOfBatchesOfGoods::setNameOfPackage(char* name)
 {
 	int size = strlen(name) + 1;
-	name_ = (char*)malloc(size);/////////////////////////////////////////////////
+
+	name_ = new char[size];
 	strcpy_s(name_, size, name);
 }
 
@@ -79,7 +80,7 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray()
 {
 	int n = package_size_;
 
-	char** lines = (char**)malloc(n * sizeof(char*));//////////////////////////////////
+	char** lines = new char* [n];
 	char* str;
 	int size_str = 2 * 22 + strlen(name_) + 12;
 
@@ -91,7 +92,7 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray()
 		node = node->next;
 	}
 
-	str = (char*)malloc(size_str * sizeof(char));//////////////////////////////////////////
+	str = new char[size_str];
 
 	strcpy_s(str, size_str, "\n=====================\n");
 	strcat_s(str, size_str, " ");
@@ -101,9 +102,9 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray()
 	for (int i = 0; i < n; i++)
 	{
 		strcat_s(str, size_str, lines[i]);
-		free(lines[i]);
+		delete lines[i];
 	}
-	free(lines);
+	delete lines;
 	return str;
 }
 

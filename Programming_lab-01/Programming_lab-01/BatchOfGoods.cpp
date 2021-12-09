@@ -13,9 +13,9 @@ bool BatchOfGoods::setNameOfGoods(char* s)
 	int size_str = strlen(s) + 1;
 	if (s != 0)
 	{
-		if (name_ == 0) free(name_);
+		if (name_ == 0) delete name_;
 
-		name_ = (char*)malloc(size_str);//////////////////////////////////////
+		name_ = new char[size_str];
 		strcpy_s(name_, size_str, s);
 
 		return true;
@@ -29,7 +29,8 @@ bool BatchOfGoods::setNameOfGoods(const char s[])
 	if (s != 0)
 	{
 		if (name_ == 0) free(name_);
-		name_ = (char*)malloc(size_str);//////////////////////////////////////
+		
+		name_ = new char[size_str];
 		strcpy_s(name_, size_str, s);
 		return true;
 	}
@@ -111,7 +112,8 @@ char* BatchOfGoods::getIdOfGoodsAsCharArray()
 	str_id = convertIntToCharArray(ID_);
 
 	int n = 8 - strlen(str_id);
-	str0 = (char*)malloc(n + 1);///////////////////////////////////////////
+	
+	str0 = new char[n + 1];
 	str0[n] = '\0';
 
 	int i = 0;
@@ -120,15 +122,15 @@ char* BatchOfGoods::getIdOfGoodsAsCharArray()
 	strcpy_s(str, 9, str0);
 	strcat_s(str, 9, str_id);
 
-	free(str0);
-	free(str_id);
+	delete str0;
+	delete str_id;
 
 	return str;
 }
 
 char* BatchOfGoods::getBatchAsCharArray(int n)
 {
-	char* indent = (char*)malloc(n + 2);///////////////////////////////
+	char* indent = new char[n + 2];
 
 	indent[0] = '\n';
 	for (int i = 1; i <= n; i++) indent[i] = ' ';
@@ -150,7 +152,7 @@ char* BatchOfGoods::getBatchAsCharArray(int n)
 	str_size += strlen("Quantity: ") + strlen(quantity);
 	str_size += strlen("Date: ") + strlen(date) + 10;
 
-	char* str = (char*)malloc(str_size);/////////////////////////////////////
+	char* str = new char[str_size];
 
 	strcpy_s(str, str_size, indent);
 	strcat_s(str, str_size, "Name: ");
@@ -172,18 +174,18 @@ char* BatchOfGoods::getBatchAsCharArray(int n)
 	strcat_s(str, str_size, "Date: ");
 	strcat_s(str, str_size, date);
 
-	free(indent);
-	free(ID);
-	free(price);
-	free(quantity);
-	free(date);
+	delete indent;
+	delete ID;
+	delete price;
+	delete quantity;
+	delete date;
 
 	return str;
 }
 
 char* BatchOfGoods::getBatchAsCharArray_WithoutName(int n)
 {
-	char* indent = (char*)malloc(n + 2);/////////////////////////////////
+	char* indent = new char[n + 2];
 
 	indent[0] = '\n';
 	for (int i = 1; i <= n; i++) indent[i] = ' ';
@@ -203,7 +205,7 @@ char* BatchOfGoods::getBatchAsCharArray_WithoutName(int n)
 	str_size += strlen("| Quantity: ") + strlen(quantity);
 	str_size += strlen("| Date: ") + strlen(date) + 10;
 
-	char* str = (char*)malloc(str_size);///////////////////////////////////////////
+	char* str = new char[str_size];
 
 	strcpy_s(str, str_size, indent);
 	strcat_s(str, str_size, "| ID: ");
@@ -224,11 +226,11 @@ char* BatchOfGoods::getBatchAsCharArray_WithoutName(int n)
 	strcat_s(str, str_size, indent);
 	strcat_s(str, str_size, "------------------");
 
-	free(indent);
-	free(ID);
-	free(price);
-	free(quantity);
-	free(date);
+	delete indent;
+	delete ID;
+	delete price;
+	delete quantity;
+	delete date;
 
 	return str;
 }
@@ -251,8 +253,6 @@ void BatchOfGoods::resetQuantityOfGoods()
 
 bool BatchOfGoods::launchNewBatchForm()
 {
-	//BatchOfGoods* batch = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));//////////////////////////////
-
 	char command[100];
 	bool is_right[5];
 
@@ -359,13 +359,13 @@ bool BatchOfGoods::launchNewBatchForm()
 
 void BatchOfGoods::deleteBatch()
 {
-	free(name_);	
-	free(this);
+	delete name_;
+	delete this;
 }
 
 BatchOfGoods* BatchOfGoods::cloneBarch()
 {
-	BatchOfGoods* b = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));/////////////////////////	
+	BatchOfGoods* b = new BatchOfGoods();
 	*b = *this;
 	return b;
 }

@@ -5,7 +5,7 @@ char* convertIntToCharArray_OnlyPositive(int integer)
 	char* str;
 	if (integer == 0) 
 	{
-		str = (char*)malloc(2 * sizeof(char));
+		str = new char[2];
 		str[0] = '0';
 		str[1] = '\0';
 	}
@@ -13,7 +13,7 @@ char* convertIntToCharArray_OnlyPositive(int integer)
 	{
 		int degree = log(integer) / log(10);
 
-		str = (char*)malloc(degree + 2);
+		str = new char[degree + 2];
 
 		str[degree + 1] = '\0';
 
@@ -37,10 +37,10 @@ char* convertIntToCharArray(int integer)
 	{
 		char* s = convertIntToCharArray_OnlyPositive(abs(integer));
 		int size = strlen(s) + 2;
-		str = (char*)malloc(size);
+
+		str = new char[size];
 		str[size - 1] = 0;
 		
-
 		strcpy_s(str, size, "-");
 		strcat_s(str, size, s);
 	}
