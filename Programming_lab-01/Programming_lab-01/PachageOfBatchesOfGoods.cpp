@@ -130,7 +130,7 @@ bool PackageOfBatchesOfGoods::delNode(NodeWithBatch* node)
 			tail_ = node->prev;
 		else node->next->prev = node->prev;
 
-		free(node);
+		delete node;
 
 		package_size_--;
 

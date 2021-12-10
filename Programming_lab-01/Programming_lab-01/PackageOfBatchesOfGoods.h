@@ -3,7 +3,7 @@
 #include "Convert .h"
 #include "BatchOfGoods.h"
 #include <cstdlib>
-#include <string>
+#include <cstring>
 #include <iostream>
 
 struct NodeWithBatch

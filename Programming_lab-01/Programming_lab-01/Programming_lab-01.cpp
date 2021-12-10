@@ -13,8 +13,8 @@ int main()
 
     shopB = new Shop();
 
-    shopA.init();
-    shopB->init();
+    /*shopA.init();
+    shopB->init();*/
 
     shopA.setNameOfShop("Shop A");
     shopB->setNameOfShop("Shop B");
@@ -41,7 +41,7 @@ int main()
     a3.setQuantityOfGoods(16);
     a3.setDateOfBatch("01.11.2008");
 
-    b1 = (BatchOfGoods*)malloc(sizeof(BatchOfGoods));/////////////////////////////////
+    b1 = new BatchOfGoods();
     b1->setNameOfGoods("B");
     b1->setIdOfGood(398755);
     b1->setPriceOfGoods(15);

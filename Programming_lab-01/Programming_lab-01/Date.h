@@ -1,7 +1,9 @@
 #pragma once
 
-#include <string>
+#include <cstring>
 #include <cstdlib>
+#include <iostream>
+#include <fstream>
 
 class Date
 {

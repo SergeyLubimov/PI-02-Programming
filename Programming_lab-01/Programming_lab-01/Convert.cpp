@@ -35,7 +35,7 @@ char* convertIntToCharArray(int integer)
 	char* str;
 	if (integer < 0)
 	{
-		char* s = convertIntToCharArray_OnlyPositive(abs(integer));
+		char* s = convertIntToCharArray_OnlyPositive(abs(integer*1.0));
 		int size = strlen(s) + 2;
 
 		str = new char[size];

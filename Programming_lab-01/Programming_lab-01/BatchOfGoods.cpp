@@ -104,7 +104,7 @@ Date BatchOfGoods::getDate()
 
 char* BatchOfGoods::getIdOfGoodsAsCharArray()
 {
-	char *str = (char*)malloc(9);
+	char* str = new char[9];
 	str[8] = '\0';
 	char* str0;
 	char* str_id;
