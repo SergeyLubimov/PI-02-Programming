@@ -39,6 +39,9 @@
     <ClCompile Include="Shop.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="SupplierOfGoods.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h">
@@ -63,6 +66,9 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="Shop.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="SupplierOfGoods.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

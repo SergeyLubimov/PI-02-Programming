@@ -1,5 +1,9 @@
 ﻿  Programming_lab-01.cpp
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Programming_lab-01.cpp(26,25): warning C4101: b2: неиспользованная локальная переменная
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Programming_lab-01.cpp(26,31): warning C4101: b3: неиспользованная локальная переменная
-G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Programming_lab-01.cpp(26,19): warning C4101: b1: неиспользованная локальная переменная
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.h(122,21): warning C4244: =: преобразование "unsigned int" в "float", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.h(177,42): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Shop.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.h(122,21): warning C4244: =: преобразование "unsigned int" в "float", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.h(177,42): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Создание кода...
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(32): warning C4715: Shop::setNameOfShop: значение возвращается не при всех путях выполнения
   Programming_lab-01.vcxproj -> G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe

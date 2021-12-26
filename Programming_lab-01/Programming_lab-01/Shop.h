@@ -2,12 +2,16 @@
 
 #include "Warehouse.h"
 
+class SupplierOfGoods;
+
 class Shop
 {
 private:
 	char* name_;
 	Warehouse warehouse_;
 	float cash_;
+	SupplierOfGoods* contracts_with_suppliers_;
+	
 
 public:
 	Shop();
@@ -25,6 +29,18 @@ public:
 	bool sellGoods(const char name[], int* q);
 
 	void displayAssortment();
+
+	void signContract(SupplierOfGoods* supplier);
+	
+	void makeOrder(std::string name, int quantity);
+	
+
+	void redeemOrders();
+	
+
+
+	void investMoney(float money);
+
 
 };
 

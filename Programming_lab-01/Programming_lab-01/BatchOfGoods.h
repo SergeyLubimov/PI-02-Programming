@@ -3,7 +3,7 @@
 #include "Convert .h"
 #include <iostream>
 
-struct BatchOfGoods
+class BatchOfGoods
 { 
 private:
 	char* name_;

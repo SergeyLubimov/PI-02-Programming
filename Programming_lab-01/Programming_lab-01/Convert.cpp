@@ -80,3 +80,17 @@ bool checkWhetherInt(char* str)
 	}
 	return true;
 }
+
+char* convertStringToCharArray(std::string str)
+{	
+	int n = str.length();
+	char* chr = new char[n + 1];
+
+	for (int i = 0; i < n; i++)
+	{
+		chr[i] = str.at(i);
+	}
+	chr[n] = '\0';
+
+	return chr;
+}

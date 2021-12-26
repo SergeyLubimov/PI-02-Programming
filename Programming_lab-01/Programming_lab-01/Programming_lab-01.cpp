@@ -2,28 +2,76 @@
 //
 
 #include "Shop.h"
+#include "SupplierOfGoods.h"
 #include <iostream>
-
+#include <list>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
+
+
+
 int main()
-{
+{ 
+    /*list<BatchOfGoods*> asd;*/
+
+   /* string s = "112235";
+
+    cout << convertStringToCharArray(s);*/
+
+    
+    /*time_t rawtime;
+    struct tm timeinfo;
+    time(&rawtime);
+    localtime_s(&timeinfo, &rawtime);
+
+    char data[80];
+
+    strftime(data, 80, "%d.%m.%Y", &timeinfo);*/
+
+    //time_t rawtime;
+    //struct tm* timeinfo;
+    //char data[80];                                // строка, в которой будет храниться текущее время
+
+    //time(&rawtime);                               // текущая дата в секундах
+    //timeinfo = localtime_s(timeinfo, &rawtime);               // текущее локальное время, представленное в структуре
+
+    //strftime(data, 80, "%d.%m.%Y", timeinfo);
+
+    //cout << data;
+
+
+    SupplierOfGoods sup;
+
+    Shop shopC;
+
+    shopC.setNameOfShop("C");
+
+    shopC.signContract(&sup);
+    shopC.investMoney(10000);
+
+    shopC.displayAssortment();
+
+    shopC.makeOrder("A", 100);
+
+    sup.fulfillOrders();
+
+    shopC.redeemOrders();
+
+    shopC.displayAssortment();
+
+
+
     Shop shopA;
     Shop* shopB;
 
     shopB = new Shop();
 
-    /*shopA.init();
-    shopB->init();*/
-
     shopA.setNameOfShop("Shop A");
     shopB->setNameOfShop("Shop B");
 
-    //BatchOfGoods a1, a2, a3;
-
     BatchOfGoods* a = new BatchOfGoods[3];
-
-    BatchOfGoods* b1, * b2, * b3;
 
     BatchOfGoods* b[3];
 
@@ -53,6 +101,18 @@ int main()
     b[0]->setPriceOfGoods(15);
     b[0]->setQuantityOfGoods(8);
     b[0]->setDateOfBatch("07.02.2019");
+
+    ////////////////////////
+
+  /*  asd.push_back(&a[0]);
+
+    BatchOfGoods *c = asd.back();*/
+
+    
+
+   //<summary>
+    /// ////////////////
+   
 
     bool is_fullB[3];
 

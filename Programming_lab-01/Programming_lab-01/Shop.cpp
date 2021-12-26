@@ -1,5 +1,6 @@
 
 #include "Shop.h"
+#include "SupplierOfGoods.h"
 
 Shop::Shop()
 {
@@ -90,4 +91,33 @@ void Shop::displayAssortment()
 			std::cout << node->package->getPackageAsCharArray();
 		node = node->next;
 	}
+}
+
+void Shop::signContract(SupplierOfGoods* supplier)
+{
+	contracts_with_suppliers_ = supplier;
+	supplier->addContract(this);
+}
+
+void Shop::makeOrder(std::string name, int quantity)
+{
+	if (cash_ >= 0)
+		contracts_with_suppliers_->acceptOrder(this, name, quantity);
+	else
+	{
+		std::cout << "\n\nNEGATIVE BALANCE";
+		displayAssortment();
+	}
+}
+
+void Shop::redeemOrders()
+{
+	cash_ -= contracts_with_suppliers_->sellOrders(this);
+}
+
+
+void Shop::investMoney(float money)
+{
+	if(money > 0)
+		cash_ += money;
 }
