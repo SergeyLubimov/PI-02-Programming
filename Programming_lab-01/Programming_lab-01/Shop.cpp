@@ -122,7 +122,6 @@ void Shop::redeemOrders()
 	cash_ -= contracts_with_suppliers_->sellOrders(this);
 }
 
-
 void Shop::investMoney(float money)
 {
 	if(money > 0)
