@@ -7,6 +7,7 @@ Shop::Shop()
 	cash_ = 0;
 	warehouse_.init();
 	name_ = NULL;
+	margin_ = 1;
 }
 
 void Shop::init()
@@ -14,6 +15,11 @@ void Shop::init()
 	cash_ = 0;
 	warehouse_.init();
 	name_ = NULL;
+}
+
+void Shop::setMargin(unsigned percent)
+{
+	margin_ = 1 + float(percent) / 100;
 }
 
 bool Shop::setNameOfShop(char* name)
@@ -47,6 +53,7 @@ bool Shop::setNameOfShop(const char s[])
 
 void Shop::addBatch(BatchOfGoods* batch)
 {	
+	batch->setPriceOfGoods(batch->getPrice() * margin_);
 	warehouse_.addBatch(batch);
 }
 

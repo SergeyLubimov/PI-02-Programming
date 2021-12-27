@@ -84,7 +84,7 @@ public:
 
 	SupplierOfGoods()
 	{
-		margin_ = 0;
+		margin_ = 1;
 		
 	}
 
@@ -102,7 +102,7 @@ public:
 
 	void setMargin(unsigned percent)
 	{
-		margin_ = percent / 100;
+		margin_ = 1 + float(percent) / 100;
 	}
 
 	bool acceptOrder(Shop* contact, std::string name, int quantity)
