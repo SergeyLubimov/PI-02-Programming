@@ -16,8 +16,6 @@ private:
 public:
 	Shop();
 
-	void init();
-
 	void setMargin(unsigned percent);
 
 	bool setNameOfShop(char* name);

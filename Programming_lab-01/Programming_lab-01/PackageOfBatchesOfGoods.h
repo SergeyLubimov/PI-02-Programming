@@ -6,13 +6,7 @@
 #include <cstring>
 #include <iostream>
 
-struct NodeWithBatch
-{
-	BatchOfGoods* batch = NULL;
-	NodeWithBatch* next = NULL;
-	NodeWithBatch* prev = NULL;
-	int sumDays;
-};
+class NodeWithBatch;
 
 class PackageOfBatchesOfGoods
 {
@@ -25,6 +19,8 @@ private:
 public:
 
 	PackageOfBatchesOfGoods();
+
+	~PackageOfBatchesOfGoods();
 
 	void addBatch(BatchOfGoods* batch);
 
@@ -53,4 +49,15 @@ public:
 	int countGoods();
 
 	void printPackageAsCharArray();
+};
+
+class NodeWithBatch
+{
+public:
+	BatchOfGoods* batch_ = NULL;
+	NodeWithBatch* next_ = NULL;
+	NodeWithBatch* prev_ = NULL;
+	int sumDays_;
+	NodeWithBatch();
+	~NodeWithBatch();
 };

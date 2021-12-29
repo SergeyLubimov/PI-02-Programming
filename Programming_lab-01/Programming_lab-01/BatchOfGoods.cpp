@@ -357,15 +357,15 @@ bool BatchOfGoods::launchNewBatchForm()
 	return false;
 }
 
-void BatchOfGoods::deleteBatch()
-{
-	delete name_;
-	delete this;
-}
-
 BatchOfGoods* BatchOfGoods::cloneBarch()
 {
 	BatchOfGoods* b = new BatchOfGoods();
 	*b = *this;
 	return b;
+}
+
+BatchOfGoods::~BatchOfGoods()
+{
+	delete name_;
+	delete this;
 }

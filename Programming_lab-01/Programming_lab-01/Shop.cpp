@@ -5,16 +5,8 @@
 Shop::Shop()
 {
 	cash_ = 0;
-	warehouse_.init();
 	name_ = NULL;
 	margin_ = 1;
-}
-
-void Shop::init()
-{
-	cash_ = 0;
-	warehouse_.init();
-	name_ = NULL;
 }
 
 void Shop::setMargin(unsigned percent)
@@ -63,12 +55,12 @@ bool Shop::sellGoods(char* name, int* q)
 
 	bool ret = false;
 
-	while (node != NULL && strcmp(node->package->getName(), name) != 0)
-		node = node->next;
+	while (node != NULL && strcmp(node->package_->getName(), name) != 0)
+		node = node->next_;
 
-	if (node != NULL && node->is_empty == false)
+	if (node != NULL && node->is_empty_ == false)
 	{
-		cash_ += node->package->sellGoods(q);
+		cash_ += node->package_->sellGoods(q);
 		ret = true;
 	}
 	return ret;
@@ -94,9 +86,9 @@ void Shop::displayAssortment()
 
 	while (node != NULL)
 	{
-		if (node->is_empty == false)
-			std::cout << node->package->getPackageAsCharArray();
-		node = node->next;
+		if (node->is_empty_ == false)
+			std::cout << node->package_->getPackageAsCharArray();
+		node = node->next_;
 	}
 }
 

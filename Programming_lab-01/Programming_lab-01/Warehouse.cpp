@@ -5,14 +5,17 @@ Warehouse::Warehouse()
 {
 	head_ = NULL;
 	warehouse_size_ = 0;
-	displayed_warehouse_ = 0;
 }
 
-void Warehouse::init()
+Warehouse::~Warehouse()
 {
-	head_ = NULL;
-	warehouse_size_ = 0;
-	displayed_warehouse_ = 0;
+	NodeWithPachage* buff, * node = head_;
+	while (node != NULL)
+	{
+		buff = node;
+		node = node->next_;
+		delete buff;
+	}
 }
 
 NodeWithPachage* Warehouse::getHead()
@@ -25,37 +28,31 @@ int Warehouse::getSize()
 	return warehouse_size_;
 }
 
-int Warehouse::getDisplayedWarehouse()
-{
-	return displayed_warehouse_;
-}
-
 void Warehouse::addBatch(BatchOfGoods* batch)
 {
 	char* name = batch->getName();
 	NodeWithPachage* node = head_;
 
-	while (node != NULL && strcmp(name, node->package->getName()) != 0)
-		node = node->next;
+	while (node != NULL && strcmp(name, node->package_->getName()) != 0)
+		node = node->next_;
 
 	if (node == NULL)
 	{
 		node = new NodeWithPachage();
-		node->next = head_;
+		node->next_ = head_;
 		head_ = node;
 
-		node->package = new PackageOfBatchesOfGoods();
+		node->package_ = new PackageOfBatchesOfGoods();
 
-		node->package->addBatch(batch);
+		node->package_->addBatch(batch);
 
-		node->package->setNameOfPackage(name);
+		node->package_->setNameOfPackage(name);
 
 		warehouse_size_++;
-		displayed_warehouse_++;
 	}
-	else node->package->addBatch(batch);
+	else node->package_->addBatch(batch);
 
-	node->is_empty = false;
+	node->is_empty_ = false;
 }
 
 float Warehouse::sellGoods(char* name, int* quantity)
@@ -64,17 +61,16 @@ float Warehouse::sellGoods(char* name, int* quantity)
 
 	float sum = -1;
 
-	while (node != NULL && strcmp(name, node->package->getName()) != 0)
-		node = node->next;
+	while (node != NULL && strcmp(name, node->package_->getName()) != 0)
+		node = node->next_;
 
-	if (node != NULL && node->is_empty == false)
+	if (node != NULL && node->is_empty_ == false)
 	{
-		sum = node->package->sellGoods(quantity);
+		sum = node->package_->sellGoods(quantity);
 
-		if (node->package->getSize() == 0)
+		if (node->package_->getSize() == 0)
 		{
-			node->is_empty = true;
-			displayed_warehouse_--;
+			node->is_empty_ = true;
 		}
 	}
 	return sum;
@@ -86,18 +82,29 @@ float Warehouse::sellGoods(const char name[], int* quantity)
 
 	float sum = -1;
 
-	while (node != NULL && strcmp(name, node->package->getName()) != 0)
-		node = node->next;
+	while (node != NULL && strcmp(name, node->package_->getName()) != 0)
+		node = node->next_;
 
-	if (node != NULL && node->is_empty == false)
+	if (node != NULL && node->is_empty_ == false)
 	{
-		sum = node->package->sellGoods(quantity);
+		sum = node->package_->sellGoods(quantity);
 
-		if (node->package->getSize() == 0)
+		if (node->package_->getSize() == 0)
 		{
-			node->is_empty = true;
-			displayed_warehouse_--;
+			node->is_empty_ = true;
 		}
 	}
 	return sum;
 }
+
+NodeWithPachage::NodeWithPachage()
+{
+	NodeWithPachage* next = NULL;
+	bool is_empty = true;
+}
+
+NodeWithPachage::~NodeWithPachage()
+{
+	delete package_;
+}
+

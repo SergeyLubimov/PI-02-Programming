@@ -2,35 +2,37 @@
 
 #include "PackageOfBatchesOfGoods.h"
 
-struct NodeWithPachage
-{
-	PackageOfBatchesOfGoods* package;
-	NodeWithPachage* next = NULL;
-	bool is_empty = true;
-};
+class NodeWithPachage;
 
 struct Warehouse
 {
 private:
 	NodeWithPachage* head_;
 	int warehouse_size_;
-	int displayed_warehouse_;
 
 public:
 
 	Warehouse();
 
-	void init();
+	~Warehouse();
 
 	NodeWithPachage* getHead();
 
 	int getSize();
-
-	int getDisplayedWarehouse();
 
 	void addBatch(BatchOfGoods* batch);
 
 	float sellGoods(char* name, int* quantity);
 
 	float sellGoods(const char name[], int* quantity);
+};
+
+class NodeWithPachage
+{
+public:
+	PackageOfBatchesOfGoods* package_;
+	NodeWithPachage* next_;
+	bool is_empty_;
+	NodeWithPachage();
+	~NodeWithPachage();
 };

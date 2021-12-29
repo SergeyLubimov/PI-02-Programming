@@ -15,6 +15,8 @@ private:
 public:
 	BatchOfGoods();
 
+	~BatchOfGoods();
+
 	bool setNameOfGoods(char* s);
 
 	bool setNameOfGoods(const char s[]);
@@ -52,8 +54,6 @@ public:
 	void resetQuantityOfGoods();
 
 	bool launchNewBatchForm();
-
-	void deleteBatch();
 
 	BatchOfGoods* cloneBarch();
 };

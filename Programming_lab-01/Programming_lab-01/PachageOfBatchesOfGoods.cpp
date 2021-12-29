@@ -9,49 +9,60 @@ PackageOfBatchesOfGoods::PackageOfBatchesOfGoods()
 	package_size_ = 0;
 }
 
+PackageOfBatchesOfGoods::~PackageOfBatchesOfGoods()
+{
+	NodeWithBatch *buff, *node = head_;
+	while (node != NULL)
+	{
+		buff = node;
+		node = node->next_;
+		delete buff;
+	}
+}
+
 void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 {
 	int sum = convertDateToDays(batch->getDate());
 
 	NodeWithBatch* node = new NodeWithBatch();
 
-	node->batch = batch;
-	node->sumDays = sum;
+	node->batch_ = batch;
+	node->sumDays_ = sum;
 
 	if (package_size_ == 0)
 	{
 		head_ = tail_ = node;
-		node->prev = node->next = NULL;
+		node->prev_ = node->next_ = NULL;
 	}
 	else
 	{
-		if (head_->sumDays >= sum)
+		if (head_->sumDays_ >= sum)
 		{
-			node->next = head_;
-			head_->prev = node;
+			node->next_ = head_;
+			head_->prev_ = node;
 			head_ = node;
-			node->prev = NULL;
+			node->prev_ = NULL;
 		}
 		else
 		{
-			if (tail_->sumDays <= sum)
+			if (tail_->sumDays_ <= sum)
 			{
-				tail_->next = node;
-				node->prev = tail_;
+				tail_->next_ = node;
+				node->prev_ = tail_;
 				tail_ = node;
-				node->next = NULL;
+				node->next_ = NULL;
 			}
 			else
 			{
 				NodeWithBatch* current;
-				for (current = head_; current->next->sumDays < sum;
-					current = current->next);
+				for (current = head_; current->next_->sumDays_ < sum;
+					current = current->next_);
 
-				node->next = current->next;
-				current->next = node;
+				node->next_ = current->next_;
+				current->next_ = node;
 
-				node->prev = current;
-				node->next->prev = node;
+				node->prev_ = current;
+				node->next_->prev_ = node;
 			}
 		}
 	}
@@ -87,9 +98,9 @@ char* PackageOfBatchesOfGoods::getPackageAsCharArray()
 	NodeWithBatch* node = head_;
 	for (int i = 0; i < n; i++)
 	{
-		lines[i] = node->batch->getBatchAsCharArray_WithoutName(3);
+		lines[i] = node->batch_->getBatchAsCharArray_WithoutName(3);
 		size_str += strlen(lines[i]);
-		node = node->next;
+		node = node->next_;
 	}
 
 	str = new char[size_str];
@@ -124,11 +135,11 @@ bool PackageOfBatchesOfGoods::delNode(NodeWithBatch* node)
 	if (node != NULL)
 	{
 		if (node == head_)
-			head_ = node->next;
-		else node->prev->next = node->next;
+			head_ = node->next_;
+		else node->prev_->next_ = node->next_;
 		if (node == tail_)
-			tail_ = node->prev;
-		else node->next->prev = node->prev;
+			tail_ = node->prev_;
+		else node->next_->prev_ = node->prev_;
 
 		delete node;
 
@@ -145,7 +156,7 @@ NodeWithBatch* PackageOfBatchesOfGoods::findNode(int id)
 	NodeWithBatch* current = head_;
 
 	while (current != NULL && node != NULL)
-		if (current->batch->getID() == id) node = current;
+		if (current->batch_->getID() == id) node = current;
 	return node;
 }
 
@@ -157,9 +168,9 @@ float PackageOfBatchesOfGoods::sellProduct(int id)
 
 	if (node != NULL)
 	{
-		node->batch->reduceQuantityOfGoods(1);
-		sum = node->batch->getPrice();
-		if (node->batch->getQuantity() == 0) delNode(node);
+		node->batch_->reduceQuantityOfGoods(1);
+		sum = node->batch_->getPrice();
+		if (node->batch_->getQuantity() == 0) delNode(node);
 	}
 	return sum;
 }
@@ -171,18 +182,18 @@ float PackageOfBatchesOfGoods::sellGoods(NodeWithBatch* node, int* quantity)
 	if (node != NULL)
 	{
 		int q = *quantity;
-		if (q > node->batch->getQuantity())
+		if (q > node->batch_->getQuantity())
 		{
-			q = node->batch->getQuantity();
+			q = node->batch_->getQuantity();
 			*quantity -= q;
-			node->batch->resetQuantityOfGoods();
+			node->batch_->resetQuantityOfGoods();
 		}
 		else
 		{
-			node->batch->reduceQuantityOfGoods(q);
+			node->batch_->reduceQuantityOfGoods(q);
 			*quantity = 0;
 		}
-		sum = q * node->batch->getPrice();
+		sum = q * node->batch_->getPrice();
 	}
 	return sum;
 }
@@ -198,13 +209,13 @@ float PackageOfBatchesOfGoods::sellGoods(int* quantity)
 	{
 		sum += sellGoods(node, quantity);
 
-		if (node->batch->getQuantity() == 0)
+		if (node->batch_->getQuantity() == 0)
 		{
 			buff = node;
-			node = node->next;
+			node = node->next_;
 			delNode(buff);
 		}
-		else node = node->next;
+		else node = node->next_;
 	}
 	return sum;
 }
@@ -216,8 +227,8 @@ int PackageOfBatchesOfGoods::countGoods()
 	int count = 0;
 	while (node != NULL)
 	{
-		count += node->batch->getQuantity();
-		node = node->next;
+		count += node->batch_->getQuantity();
+		node = node->next_;
 	}
 	return count;
 }
@@ -228,7 +239,20 @@ void PackageOfBatchesOfGoods::printPackageAsCharArray()
 	NodeWithBatch* current = head_;
 	for (int i = 0; i < n; i++)
 	{
-		std::cout << current->batch->getBatchAsCharArray(0) << std::endl;
-		current = current->next;
+		std::cout << current->batch_->getBatchAsCharArray(0) << std::endl;
+		current = current->next_;
 	}
+}
+
+NodeWithBatch::NodeWithBatch()
+{
+	batch_ = NULL;
+	next_ = NULL;
+	prev_ = NULL;
+	sumDays_ = 0;
+}
+
+NodeWithBatch::~NodeWithBatch()
+{
+	batch_ = NULL;
 }
