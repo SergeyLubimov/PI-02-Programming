@@ -11,7 +11,7 @@ private:
 	Warehouse warehouse_;
 	float cash_;
 	float margin_;
-	SupplierOfGoods* contracts_with_suppliers_;	
+	SupplierOfGoods* contract_with_supplier_;	
 
 public:
 	Shop();

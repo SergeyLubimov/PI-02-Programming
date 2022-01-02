@@ -94,14 +94,14 @@ void Shop::displayAssortment()
 
 void Shop::signContract(SupplierOfGoods* supplier)
 {
-	contracts_with_suppliers_ = supplier;
+	contract_with_supplier_ = supplier;
 	supplier->addContract(this);
 }
 
 void Shop::makeOrder(std::string name, int quantity)
 {
 	if (cash_ >= 0)
-		contracts_with_suppliers_->acceptOrder(this, name, quantity);
+		contract_with_supplier_->acceptOrder(this, name, quantity);
 	else
 	{
 		std::cout << "\n\nNEGATIVE BALANCE";
@@ -111,7 +111,7 @@ void Shop::makeOrder(std::string name, int quantity)
 
 void Shop::redeemOrders()
 {
-	cash_ -= contracts_with_suppliers_->sellOrders(this);
+	cash_ -= contract_with_supplier_->sellOrders(this);
 }
 
 void Shop::investMoney(float money)
