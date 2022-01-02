@@ -22,7 +22,7 @@ namespace Programming_lab_06
             date_ = date;
         }
 
-        //Методы get
+  
         public string getName()
         {
             return name_;
@@ -43,8 +43,6 @@ namespace Programming_lab_06
         {
             return date_;
         }
-
-        //Методы set
         public void setName(string name)
         {
             name_ = name;
@@ -116,10 +114,6 @@ namespace Programming_lab_06
         {
             string str = "";
 
-            //for (int i = 0; i < 11; i++) str += "=";
-            //str += "\n" + name_ + "\n";
-            //for (int i = 0; i < 11; i++) str += "=";
-
             str += "\n   | ID: ";
 
             int n = (int)Math.Log10(ID_);
@@ -136,7 +130,6 @@ namespace Programming_lab_06
 
 
             return str;
-
         }
     }
 }

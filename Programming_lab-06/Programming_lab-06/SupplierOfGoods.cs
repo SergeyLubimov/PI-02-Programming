@@ -4,34 +4,6 @@ using System.Text;
 
 namespace Programming_lab_06
 {
-    class Order
-    {
-        private string name_;
-        private int quantity_;
-
-        public Order(string name, int quantuty)
-        {
-            name_ = name;
-            quantity_ = quantuty;
-        }
-        public string getName() { return name_; }
-        public int getQuantity() { return quantity_; }
-
-    }
-    class Contract
-    {
-        public Shop shop_;
-        public List<Order> orders_;
-        public List<BatchOfGoods> ready_orders_;
-
-        public Contract(Shop shop)
-        {
-            shop_ = shop;
-            orders_ = new List<Order>();
-            ready_orders_ = new List<BatchOfGoods>();
-        }        
-    }
-
     class SupplierOfGoods
     {
         private List<Contract> contracts_;
@@ -108,8 +80,33 @@ namespace Programming_lab_06
                 contracts_[i].ready_orders_.RemoveAt(0);
             }
             return sum;
-        }
-        
+        }  
+    }
+    class Order
+    {
+        private string name_;
+        private int quantity_;
 
+        public Order(string name, int quantuty)
+        {
+            name_ = name;
+            quantity_ = quantuty;
+        }
+        public string getName() { return name_; }
+        public int getQuantity() { return quantity_; }
+
+    }
+    class Contract
+    {
+        public Shop shop_;
+        public List<Order> orders_;
+        public List<BatchOfGoods> ready_orders_;
+
+        public Contract(Shop shop)
+        {
+            shop_ = shop;
+            orders_ = new List<Order>();
+            ready_orders_ = new List<BatchOfGoods>();
+        }
     }
 }

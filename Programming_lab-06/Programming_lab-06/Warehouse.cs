@@ -93,11 +93,6 @@ namespace Programming_lab_06
 
             if (n < 0) packages_[i - 1].addBatchOfGoods(batch);
             else packages_.Add(new PackageOfGoods(batch));
-
-            //float ret = 0;
-
-            //if(n < 0) ret = 
-
         }
         public float sellBatchsOfGoods(string name, ref int quantity)
         {
@@ -127,10 +122,5 @@ namespace Programming_lab_06
             return str;
             
         }
-
-
-
-        
-
     }
 }
