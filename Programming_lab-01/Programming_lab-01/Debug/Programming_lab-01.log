@@ -1,2 +1,9 @@
-﻿  Warehouse.cpp
+﻿  Programming_lab-01.cpp
+  Shop.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(48,43): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  SupplierOfGoods.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.cpp(60,41): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Сustomer.cpp
+  Создание кода...
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(30): warning C4715: Shop::setNameOfShop: значение возвращается не при всех путях выполнения
   Programming_lab-01.vcxproj -> G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe
