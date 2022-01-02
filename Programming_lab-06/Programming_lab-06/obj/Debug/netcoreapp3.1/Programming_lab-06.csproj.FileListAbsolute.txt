@@ -1,0 +1,14 @@
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.exe
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.deps.json
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.runtimeconfig.json
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.runtimeconfig.dev.json
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.dll
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\bin\Debug\netcoreapp3.1\Programming_lab-06.pdb
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.csproj.AssemblyReference.cache
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.GeneratedMSBuildEditorConfig.editorconfig
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.AssemblyInfoInputs.cache
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.AssemblyInfo.cs
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.csproj.CoreCompileInputs.cache
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.dll
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.pdb
+G:\PI-02\PI-02-Programming\Programming_lab-06\Programming_lab-06\obj\Debug\netcoreapp3.1\Programming_lab-06.genruntimeconfig.cache
