@@ -4,17 +4,23 @@ using System.Text;
 
 namespace Programming_lab_06
 {
-    class Customer
+    struct Customer
     {
         private List<Shop> shop_in_mind_;
 
-        public Customer()
+        //public Customer()
+        //{
+        //    shop_in_mind_ = new List<Shop>();
+        //}
+
+        public List<Shop> Mind
         {
-            shop_in_mind_ = new List<Shop>();
+            get { return shop_in_mind_; }
         }
 
         public void rememberShop(Shop shop)
         {
+            if (shop_in_mind_ == null) shop_in_mind_ = new List<Shop>();
             if (!(shop_in_mind_.Contains(shop)))
                 shop_in_mind_.Add(shop);
         }
