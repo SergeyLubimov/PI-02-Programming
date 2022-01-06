@@ -24,6 +24,4 @@ public class Customer
               shop_in_mind_.get(i).sellBatchsOfGoods(name, q);
           return q[0];
       }
-
-
 }

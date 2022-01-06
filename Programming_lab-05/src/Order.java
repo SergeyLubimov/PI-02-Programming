@@ -11,6 +11,4 @@ public class Order
      }
      public String getName() { return name_; }
      public int getQuantity() { return quantity_; }
-
-
 }

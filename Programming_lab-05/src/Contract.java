@@ -12,6 +12,4 @@ public class Contract
         orders_ = new ArrayList<Order>();
         ready_orders_ = new ArrayList<BatchOfGoods>();
     }
-
-
 }

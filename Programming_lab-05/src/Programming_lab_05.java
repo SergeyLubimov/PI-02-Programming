@@ -3,9 +3,53 @@
 
 public class Programming_lab_05 
 {
+	
+	private static void increase(Buff buff)
+	{
+		buff.setValue(buff.getValue() + 1);
+	}
+	
 	public static void main(String[] args)
 	{
 		SupplierOfGoods supplier = new SupplierOfGoods();
+		
+		Shop[] shops = new Shop[5];
+		
+		for(int i = 0; i < shops.length; i++)
+		{
+			shops[i] = new Shop(String.format("Shop %d", i + 1));
+			shops[i].signContract(supplier);
+			supplier.addContract(shops[i]);
+			shops[i].investMoney(10000);
+			shops[i].makeOrder(String.format("Goood %d", i + 1), i + 1);
+		}		
+		
+		supplier.fulfillOrders();
+		
+		for(Shop shop: shops)
+		{
+			shop.redeemOrders();
+			shop.displayAssortment();
+		}
+		
+		int a = 1;
+		Buff buff = new Buff();
+		buff.setValue(a);
+		
+		System.out.printf("%d\n", a);
+		
+		increase(buff);
+		
+		a = buff.getValue();		
+		
+		System.out.printf("%d", a);
+		
+		
+		
+		
+		
+		
+		/*SupplierOfGoods supplier = new SupplierOfGoods();
 
         supplier.setMatgin(20);
 
@@ -59,10 +103,6 @@ public class Programming_lab_05
             System.out.printf("\n\nThe product A is over. Missing " + q1 + "\n");
         if (q2 > 0)
             System.out.printf("\n\nThe product B is over. Missing " + q2 + "\n");
-
-		
-		
-
+	*/
 	}
-
 }

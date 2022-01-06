@@ -21,6 +21,12 @@ public class BatchOfGoods
 		date_format_ = new SimpleDateFormat("dd.MM.yyyy");
 	}
 	
+	public BatchOfGoods(String name)
+	{
+		this();
+		name_ = name;
+	}
+	
 	public String getName() {return name_;}
 	public int getID() {return ID_;}
 	public float getPrice() {return price_;}
@@ -66,9 +72,7 @@ public class BatchOfGoods
 	}
 	public void setDate(String str)
 	{
-		String[] s = str.split("\\.");
-		
-	
+		String[] s = str.split("\\.");	
 		
 		double double_date = 0;
 		

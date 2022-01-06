@@ -70,10 +70,4 @@ public class PackageOfGoods
          batchs_.add(batch);
      }
 
-
-
-
-
-	
-
 }

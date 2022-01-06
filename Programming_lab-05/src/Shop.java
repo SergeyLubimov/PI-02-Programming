@@ -33,6 +33,7 @@ public class Shop
      {
          contract_with_supplier_ = supplier;
      }
+    
 
      public boolean makeOrder(String name, int quantity)
      {
@@ -77,6 +78,4 @@ public class Shop
 
          System.out.println(str + warehouse_.getPackagesAsString());
      }
-
-
 }
