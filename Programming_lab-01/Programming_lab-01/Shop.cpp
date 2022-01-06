@@ -5,7 +5,7 @@
 Shop::Shop()
 {
 	cash_ = 0;
-	name_ = NULL;
+	name_ = "";
 	margin_ = 1;
 }
 
@@ -14,34 +14,34 @@ void Shop::setMargin(unsigned percent)
 	margin_ = 1 + float(percent) / 100;
 }
 
-bool Shop::setNameOfShop(char* name)
+bool Shop::setNameOfShop(std::string name)
 {
-	int size_str = strlen(name) + 1;
-	if (name != 0)
+	//int size_str = strlen(name) + 1;
+	if (name != "")
 	{
-		if (name_ == 0) delete name_;
+		//if (name_ == 0) delete name_;
 
-		name_ = new char[size_str];
-		strcpy_s(name_, size_str, name);
+		/*name_ = new char[size_str];*/
+		name_ = name;
 
 		return true;
 	}
 	else false;
 }
 
-bool Shop::setNameOfShop(const char s[])
-{
-	int size_str = strlen(s) + 1;
-	if (s != 0)
-	{
-		if (name_ == 0) delete name_;
-
-		name_ = new char[size_str];
-		strcpy_s(name_, size_str, s);
-		return true;
-	}
-	return false;
-}
+//bool Shop::setNameOfShop(const char s[])
+//{
+//	int size_str = strlen(s) + 1;
+//	if (s != 0)
+//	{
+//		if (name_ == 0) delete name_;
+//
+//		name_ = new char[size_str];
+//		strcpy_s(name_, size_str, s);
+//		return true;
+//	}
+//	return false;
+//}
 
 void Shop::addBatch(BatchOfGoods* batch)
 {	
@@ -49,13 +49,13 @@ void Shop::addBatch(BatchOfGoods* batch)
 	warehouse_.addBatch(batch);
 }
 
-bool Shop::sellGoods(char* name, int* q)
+bool Shop::sellGoods(std::string name, int* q)
 {
 	NodeWithPachage* node = warehouse_.getHead();
 
 	bool ret = false;
 
-	while (node != NULL && strcmp(node->package_->getName(), name) != 0)
+	while (node != NULL && node->package_->getName() != name)
 		node = node->next_;
 
 	if (node != NULL && node->is_empty_ == false)
@@ -66,17 +66,17 @@ bool Shop::sellGoods(char* name, int* q)
 	return ret;
 }
 
-bool Shop::sellGoods(const char name[], int* q)
-{
-	bool ret = false;
-
-	if (*q > 0)
-	{
-		cash_ += warehouse_.sellGoods(name, q);
-		ret = true;
-	}
-	return ret;
-}
+//bool Shop::sellGoods(const char name[], int* q)
+//{
+//	bool ret = false;
+//
+//	if (*q > 0)
+//	{
+//		cash_ += warehouse_.sellGoods(name, q);
+//		ret = true;
+//	}
+//	return ret;
+//}
 
 void Shop::displayAssortment()
 {
@@ -119,3 +119,4 @@ void Shop::investMoney(float money)
 	if(money > 0)
 		cash_ += money;
 }
+

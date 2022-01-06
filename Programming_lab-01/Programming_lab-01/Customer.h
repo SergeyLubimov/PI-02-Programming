@@ -13,8 +13,8 @@ private:
 public:
 	void rememberShop(Shop* shop);
 
-	int buyGoods(char* name, const int q);
+	int buyGoods(std::string name, const int q);
 
-	int buyGoods(const char name[], const int q);
+	//int buyGoods(const char name[], const int q);
 };
 

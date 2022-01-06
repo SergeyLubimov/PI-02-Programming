@@ -3,7 +3,7 @@
 
 PackageOfBatchesOfGoods::PackageOfBatchesOfGoods()
 {
-	name_ = NULL;
+	name_ = "";
 	head_ = NULL;
 	tail_ = NULL;
 	package_size_ = 0;
@@ -69,15 +69,12 @@ void PackageOfBatchesOfGoods::addBatch(BatchOfGoods* batch)
 	package_size_++;
 }
 
-void PackageOfBatchesOfGoods::setNameOfPackage(char* name)
-{
-	int size = strlen(name) + 1;
-
-	name_ = new char[size];
-	strcpy_s(name_, size, name);
+void PackageOfBatchesOfGoods::setNameOfPackage(std::string name)
+{	
+	name_ = name;
 }
 
-char* PackageOfBatchesOfGoods::getName()
+std::string PackageOfBatchesOfGoods::getName()
 {
 	return name_;
 }
@@ -87,35 +84,32 @@ int PackageOfBatchesOfGoods::getSize()
 	return package_size_;
 }
 
-char* PackageOfBatchesOfGoods::getPackageAsCharArray()
+std::string PackageOfBatchesOfGoods::getPackageAsCharArray()
 {
 	int n = package_size_;
 
-	char** lines = new char* [n];
-	char* str;
-	int size_str = 2 * 22 + strlen(name_) + 12;
+	std::string *lines = new std::string[n];
+	std::string str;
 
 	NodeWithBatch* node = head_;
 	for (int i = 0; i < n; i++)
 	{
-		lines[i] = node->batch_->getBatchAsCharArray_WithoutName(3);
-		size_str += strlen(lines[i]);
+		lines[i] = node->batch_->getBatchAsCharArray_WithoutName(3);		
 		node = node->next_;
 	}
 
-	str = new char[size_str];
+	/*str = new char[size_str];*/
 
-	strcpy_s(str, size_str, "\n=====================\n");
-	strcat_s(str, size_str, " ");
-	strcat_s(str, size_str, name_);
-	strcat_s(str, size_str, "\n=====================");
+	str += "\n=====================\n ";
+	//strcat_s(str, size_str, " ");
+	str += name_;
+	str += "\n=====================";
 
 	for (int i = 0; i < n; i++)
 	{
-		strcat_s(str, size_str, lines[i]);
-		delete lines[i];
+		str += lines[i];
 	}
-	delete lines;
+	//delete lines;
 	return str;
 }
 
@@ -206,6 +200,51 @@ float PackageOfBatchesOfGoods::sellGoods(int* quantity)
 	NodeWithBatch* buff;
 
 	while (node != NULL && *quantity > 0)
+	{
+		sum += sellGoods(node, quantity);
+
+		if (node->batch_->getQuantity() == 0)
+		{
+			buff = node;
+			node = node->next_;
+			delNode(buff);
+		}
+		else node = node->next_;
+	}
+	return sum;
+}
+
+float PackageOfBatchesOfGoods::sellGoods(NodeWithBatch *node, int &quantity)
+{
+	float sum = 0;
+
+	if (node != NULL)
+	{
+		int q = quantity;
+		if (q > node->batch_->getQuantity())
+		{
+			q = node->batch_->getQuantity();
+			quantity -= q;
+			node->batch_->resetQuantityOfGoods();
+		}
+		else
+		{
+			node->batch_->reduceQuantityOfGoods(q);
+			quantity = 0;
+		}
+		sum = q * node->batch_->getPrice();
+	}
+	return sum;
+}
+
+float PackageOfBatchesOfGoods::sellGoods(int &quantity)
+{
+	float sum = 0;
+
+	NodeWithBatch* node = head_;
+	NodeWithBatch* buff;
+
+	while (node != NULL && quantity > 0)
 	{
 		sum += sellGoods(node, quantity);
 

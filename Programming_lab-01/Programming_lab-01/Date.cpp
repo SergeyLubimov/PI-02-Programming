@@ -7,6 +7,17 @@ Date::Date()
 	year_ = 0;
 }
 
+//Date::Date(int day, int month)
+//{
+//	setDay(day);
+//	setMonht(month);
+//}
+//
+//Date::Date(int day, int month, int year)
+//{
+//	this(day, month);
+//}
+
 int Date::getDay()
 {
 	return day_;
@@ -54,10 +65,9 @@ bool Date::setDate(int day, int month, int year)
 	return setDay(day) && setMonht(month) && setYear(year);
 }
 
-bool Date::setDateAsCharArray(char* str)
+bool Date::setDateAsCharArray(std::string str)
 {
-	if (str != 0 && ((strlen(str) == 11 && str[10] == 0) || 
-		(strlen(str) == 10 && str[9] != 0)))
+	if (str != "" && (str.size() == 10))
 	{
 		int i = 0;
 		char c;
@@ -127,4 +137,39 @@ char* Date::getDateAsCharArray()
 	str[10] = '\0';
 
 	return str;
+}
+
+const Date& operator++(Date& date)
+{
+	if (date.day_ < 31) date.day_++;
+	else
+	{
+		date.day_ = 1;
+		if (date.month_ < 12) date.month_++;
+		else
+		{
+			date.month_ = 1;
+			date.year_++;
+		}
+	}
+	return date;
+}
+
+const Date& operator++(Date& date, int)
+{
+	Date* old = new Date();
+
+	old->setDate(date.day_, date.month_, date.year_);
+	if (date.day_ < 31) date.day_++;
+	else
+	{
+		date.day_ = 1;
+		if (date.month_ < 12) date.month_++;
+		else
+		{
+			date.month_ = 1;
+			date.year_++;
+		}
+	}
+	return *old;
 }

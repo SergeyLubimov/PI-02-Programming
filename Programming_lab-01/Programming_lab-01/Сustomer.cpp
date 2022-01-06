@@ -5,12 +5,12 @@ void Customer::rememberShop(Shop* shop)
 	shop_in_mind_.push_back(shop);
 }
 
-int Customer::buyGoods(char* name, const int q)
+int Customer::buyGoods(std::string name, const int q)
 {
 	int Q = q;
 
 	std::list<Shop*>::iterator it = shop_in_mind_.begin();
-	it++;
+	//it++;
 
 	while (Q > 0 && it != shop_in_mind_.end())
 	{
@@ -20,16 +20,16 @@ int Customer::buyGoods(char* name, const int q)
 	return Q;
 }
 
-int Customer::buyGoods(const char name[], const int q)
-{
-	int Q = q;
-
-	std::list<Shop*>::iterator it = shop_in_mind_.begin();
-
-	while (Q > 0 && it != shop_in_mind_.end())
-	{
-		(*it)->sellGoods(name, &Q);
-		it++;
-	}
-	return Q;
-}
+//int Customer::buyGoods(const char name[], const int q)
+//{
+//	int Q = q;
+//
+//	std::list<Shop*>::iterator it = shop_in_mind_.begin();
+//
+//	while (Q > 0 && it != shop_in_mind_.end())
+//	{
+//		(*it)->sellGoods(name, &Q);
+//		it++;
+//	}
+//	return Q;
+//}

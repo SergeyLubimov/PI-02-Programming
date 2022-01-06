@@ -36,7 +36,6 @@ void SupplierOfGoods::fulfillOrders()
 {
 	Order* buff;
 	BatchOfGoods* batch;
-	std::string str;
 	srand(unsigned(time(0)));
 
 	time_t rawtime;
@@ -50,18 +49,17 @@ void SupplierOfGoods::fulfillOrders()
 
 	while (orders_.size() > 0)
 	{
-		buff = orders_.back();
-		str = buff->getName();
+		buff = orders_.back();		
 		orders_.pop_back();
 
 		batch = new BatchOfGoods();
-		batch->setNameOfGoods(convertStringToCharArray(str));
-		batch->setIdOfGood((rand() + str.at(0)) % 100000000);
-		batch->setPriceOfGoods((int)str.at(0) * margin_);
-		batch->setQuantityOfGoods(buff->getQuantity());
+		batch->setNameOfGoods(buff->name_);
+		batch->setIdOfGood((rand() + buff->name_.at(0)) % 100000000);
+		batch->setPriceOfGoods((int)buff->name_.at(0) * margin_);
+		batch->setQuantityOfGoods(buff->quantity_);
 		batch->setDateOfBatch(data);
 
-		ready_orders_.push_back(new ReadyOrder(buff->getShopIteraror(), batch));
+		ready_orders_.push_back(new ReadyOrder(buff->shop_iterator_, batch));
 	}
 }
 
@@ -84,10 +82,10 @@ float SupplierOfGoods::sellOrders(Shop* contact)
 			buff = ready_orders_.front();
 			ready_orders_.pop_front();
 
-			if (buff->getShopIterator() == it)
+			if (buff->shop_iterator_ == it)
 			{
-				sum += buff->getBatchOfGoods()->getPrice();
-				contact->addBatch(buff->getBatchOfGoods());
+				sum += buff->batch_->getPrice();
+				contact->addBatch(buff->batch_);
 			}
 			else ready_orders_.push_back(buff);
 			n--;
@@ -105,37 +103,12 @@ Order::Order(std::list<Shop*>::iterator it, std::string name, int quantity)
 	quantity_ = quantity;
 }
 
-std::list<Shop*>::iterator Order::getShopIteraror()
-{
-	return shop_iterator_;
-}
-
-std::string Order::getName()
-{
-	return name_;
-}
-
-int Order::getQuantity()
-{
-	return quantity_;
-}
-
 //Функции класса ReadyOrder
 //
 ReadyOrder::ReadyOrder(std::list<Shop*>::iterator shop_iterator, BatchOfGoods* batch)
 {
 	shop_iterator_ = shop_iterator;
 	batch_ = batch;
-}
-
-std::list<Shop*>::iterator ReadyOrder::getShopIterator()
-{
-	return shop_iterator_;
-}
-
-BatchOfGoods* ReadyOrder::getBatchOfGoods()
-{
-	return batch_;
 }
 
 

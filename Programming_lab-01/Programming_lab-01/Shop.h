@@ -7,7 +7,7 @@ class SupplierOfGoods;
 class Shop
 {
 private:
-	char* name_;
+	std::string name_;
 	Warehouse warehouse_;
 	float cash_;
 	float margin_;
@@ -18,15 +18,15 @@ public:
 
 	void setMargin(unsigned percent);
 
-	bool setNameOfShop(char* name);
+	bool setNameOfShop(std::string name);
 
-	bool setNameOfShop(const char s[]);
+	//bool setNameOfShop(const char s[]);
 
 	void addBatch(BatchOfGoods* batch);
 
-	bool sellGoods(char* name, int* q);
+	bool sellGoods(std::string name, int* q);
 
-	bool sellGoods(const char name[], int* q);
+	//bool sellGoods(const char name[], int* q);
 
 	void displayAssortment();
 
@@ -37,4 +37,5 @@ public:
 	void redeemOrders();
 
 	void investMoney(float money);
+
 };

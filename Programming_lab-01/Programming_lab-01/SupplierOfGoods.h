@@ -33,6 +33,8 @@ public:
 
 class Order
 {
+	friend void SupplierOfGoods::fulfillOrders();
+
 private:
 	std::list<Shop*>::iterator shop_iterator_;
 	std::string name_;
@@ -40,25 +42,17 @@ private:
 
 public:
 	Order(std::list<Shop*>::iterator it, std::string name, int quantity);
-
-	std::list<Shop*>::iterator getShopIteraror();
-
-	std::string getName();
-
-	int getQuantity();
 };
 
 class ReadyOrder
 {
+	friend float SupplierOfGoods::sellOrders(Shop* contact);
+
 private:
 	std::list<Shop*>::iterator shop_iterator_;
 	BatchOfGoods* batch_;
 
 public:
 	ReadyOrder(std::list<Shop*>::iterator shop_iterator, BatchOfGoods* batch);
-
-	std::list<Shop*>::iterator getShopIterator();
-
-	BatchOfGoods* getBatchOfGoods();
 };
 

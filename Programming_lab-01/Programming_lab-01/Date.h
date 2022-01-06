@@ -27,9 +27,13 @@ public:
 
 	bool setDate(int day, int month, int year);
 
-	bool setDateAsCharArray(char* str);
+	bool setDateAsCharArray(std::string str);
 
 	bool setDateAsCharArray(const char str[]);
 
 	char* getDateAsCharArray();
+
+	friend const Date& operator++(Date& date);
+
+	friend const Date& operator++(Date& date, int);
 };

@@ -2,11 +2,12 @@
 
 #include "Convert .h"
 #include <iostream>
+#include<string>
 
 class BatchOfGoods
 { 
 private:
-	char* name_;
+	std::string name_;
 	int ID_;
 	float price_;
 	int quantity_;
@@ -17,7 +18,7 @@ public:
 
 	~BatchOfGoods();
 
-	bool setNameOfGoods(char* s);
+	bool setNameOfGoods(std::string s);
 
 	bool setNameOfGoods(const char s[]);
 
@@ -27,13 +28,13 @@ public:
 
 	bool setQuantityOfGoods(int quantity);
 
-	bool setDateOfBatch(char* str);
+	bool setDateOfBatch(std::string str);
 
-	bool setDateOfBatch(const char str[]);
+	//bool setDateOfBatch(const char str[]);
 
-	char* getIdOfGoodsAsCharArray();
+	std::string getIdOfGoodsAsCharArray();
 
-	char* getName();
+	std::string getName();
 
 	int getID();
 
@@ -43,9 +44,9 @@ public:
 	
 	Date getDate();
 
-	char* getBatchAsCharArray(int n);
+	std::string getBatchAsCharArray(int n);
 
-	char* getBatchAsCharArray_WithoutName(int n);
+	std::string getBatchAsCharArray_WithoutName(int n);
 
 	int reduceQuantityOfGoods();
 

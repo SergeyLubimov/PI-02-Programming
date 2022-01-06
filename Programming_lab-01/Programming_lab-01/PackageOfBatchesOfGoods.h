@@ -11,7 +11,7 @@ class NodeWithBatch;
 class PackageOfBatchesOfGoods
 {
 private:
-	char* name_;
+	std::string name_;
 	NodeWithBatch* head_;
 	NodeWithBatch* tail_;
 	int package_size_;
@@ -24,13 +24,13 @@ public:
 
 	void addBatch(BatchOfGoods* batch);
 
-	void setNameOfPackage(char* name);
+	void setNameOfPackage(std::string name);
 
-	char* getName();
+	std::string getName();
 
 	int getSize();
 
-	char* getPackageAsCharArray();
+	std::string getPackageAsCharArray();
 
 	int reducePackageSize(int n);
 
@@ -46,6 +46,10 @@ public:
 
 	float sellGoods(int* quantity);
 
+	float sellGoods(NodeWithBatch *node, int& quantity);
+
+	float sellGoods(int& quantity);
+	
 	int countGoods();
 
 	void printPackageAsCharArray();
