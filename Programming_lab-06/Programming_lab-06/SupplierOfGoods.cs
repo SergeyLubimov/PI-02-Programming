@@ -52,11 +52,12 @@ namespace Programming_lab_06
                     Random rdm = new Random();
 
                     BatchOfGoods batch = new BatchOfGoods();
-                    batch.setName(order.getName());
-                    batch.setID((rdm.Next() + (int)(order.getName()[0])) / 100000000);
-                    batch.setPrice((int)(order.getName()[0]) * margin_);
-                    batch.setQuantity(order.getQuantity());
-                    batch.setDate(new DateTime());
+
+                    batch.Name = order.getName();
+                    batch.ID = (rdm.Next() + (int)(order.getName()[0])) % 100000000;
+                    batch.Price = (int)(order.getName()[0]) * margin_;
+                    batch.Quantity = order.getQuantity();
+                    batch.Date = DateTime.Now;               
 
                     contract.ready_orders_.Add(batch);
                 }
@@ -75,7 +76,7 @@ namespace Programming_lab_06
             while(n < 0 && contracts_[i].ready_orders_.Count > 0)
             {
                 batch = contracts_[i].ready_orders_[0];
-                sum += batch.getPrice() * batch.getQuantity();
+                sum += batch.Price * batch.Quantity;
                 shop.addBatchOfGoods(batch);
                 contracts_[i].ready_orders_.RemoveAt(0);
             }

@@ -22,56 +22,104 @@ namespace Programming_lab_06
             date_ = date;
         }
 
-  
-        public string getName()
+        public string Name
         {
-            return name_;
+            get; set;
         }
-        public int getID()
+
+        public int ID
         {
-            return ID_;
-        }
-        public float getPrice()
-        {
-            return price_;
-        }
-        public int getQuantity()
-        {
-            return quantity_;
-        }
-        public DateTime getDate()
-        {
-            return date_;
-        }
-        public void setName(string name)
-        {
-            name_ = name;
-        }
-        public void setID(int id)
-        {
-            if(Math.Log10(id) <= 8)
+            get { return ID_; }
+            set
             {
-                ID_ = id;
+                if (Math.Log10(value) <= 8)
+                {
+                    ID_ = value;
+                }
             }
         }
-        public void setPrice(float price)
+        public float Price
         {
-            if (price > 0)
+            get { return price_; }
+            set
             {
-                price_ = price;
+                if (value > 0)
+                {
+                    price_ = value;
+                }
             }
         }
-        public void setQuantity(int quantity)
+
+        public int Quantity
         {
-            if (quantity > 0)
+            get { return quantity_; }
+            set
             {
-                quantity_ = quantity;
+                if (value > 0)
+                {
+                    quantity_ = value;
+                }
             }
         }
-        public void setDate(DateTime date)
+
+        public DateTime Date
         {
-            date_ = date;
+            get => date_;        
+            set => date_ = value;
         }
+
+
+
+
+        //public string getName()
+        //{
+        //    return name_;
+        //}
+        //public int getID()
+        //{
+        //    return ID_;
+        //}
+        //public float getPrice()
+        //{
+        //    return price_;
+        //}
+        //public int getQuantity()
+        //{
+        //    return quantity_;
+        //}
+        //public DateTime getDate()
+        //{
+        //    return date_;
+        //}
+        //public void setName(string name)
+        //{
+        //    name_ = name;
+        //}
+        //public void setID(int id)
+        //{
+        //    if(Math.Log10(id) <= 8)
+        //    {
+        //        ID_ = id;
+        //    }
+        //}
+        //public void setPrice(float price)
+        //{
+        //    if (price > 0)
+        //    {
+        //        price_ = price;
+        //    }
+        //}
+        //public void setQuantity(int quantity)
+        //{
+        //    if (quantity > 0)
+        //    {
+        //        quantity_ = quantity;
+        //    }
+        //}
+        //public void setDate(DateTime date)
+        //{
+        //    date_ = date;
+        //}
         public void setDate(string str)
         {
             string[] s = str.Split('.');
@@ -84,11 +132,11 @@ namespace Programming_lab_06
         {
             BatchOfGoods batch = new BatchOfGoods();
 
-            batch.setName(String.Copy(name_));
-            batch.setID(ID_);
-            batch.setPrice(price_);
-            batch.setQuantity(quantity_);
-            batch.setDate(date_);
+            batch.Name = String.Copy(name_);
+            batch.ID = ID_;
+            batch.Price = price_;
+            batch.Quantity = quantity_;
+            batch.Date = date_;
 
             return batch;            
         }

@@ -36,6 +36,7 @@ namespace Programming_lab_06
         }
         public void signContract(SupplierOfGoods supplier)
         {
+            supplier.addContract(this);
             contract_with_supplier_ = supplier;
         }
 
@@ -51,7 +52,7 @@ namespace Programming_lab_06
 
         public void addBatchOfGoods(BatchOfGoods batch)
         {
-            batch.setPrice(batch.getPrice() * margin_);
+            batch.Price = batch.Price * margin_;
             warehouse_.addBatchOfGoods(batch);
         }
         public void redeemOrders()

@@ -24,7 +24,7 @@ namespace Programming_lab_06
             batchs_ = new List<BatchOfGoods>();
 
             if (batchs_.Count == 0)
-                setName(batch.getName());
+                setName(batch.Name);
             batchs_.Add(batch);
         }
         public void setName(string name)
@@ -39,12 +39,12 @@ namespace Programming_lab_06
         public void addBatchOfGoods(BatchOfGoods batch)
         {
             if (batchs_.Count == 0)
-                setName(batch.getName());
+                setName(batch.Name);
             batchs_.Add(batch);
         }
         public float sellBatchsOfGoods(ref int quantity)
         {
-            batchs_.Sort((x, y) => x.getDate().CompareTo(y.getDate()));
+            batchs_.Sort((x, y) => x.Date.CompareTo(y.Date));
 
             int n = batchs_.Count;
             float sum = 0;
@@ -52,13 +52,13 @@ namespace Programming_lab_06
             for(int i = 0; quantity > 0 && i < n; i++)
             {
                 sum += batchs_[0].sellBatchOfGoods(ref quantity);
-                if(batchs_[0].getQuantity() == 0) batchs_.RemoveAt(0);
+                if(batchs_[0].Quantity == 0) batchs_.RemoveAt(0);
             }
             return sum;
         }
         public string getPackageAsString()
         {
-            batchs_.Sort((x, y) => x.getDate().CompareTo(y.getDate()));
+            batchs_.Sort((x, y) => x.Date.CompareTo(y.Date));
 
             string str = "\n";
 
@@ -87,7 +87,7 @@ namespace Programming_lab_06
             int i = 0;
             for (; i < n; i++)
             {
-                if (packages_[i].getName() == batch.getName())
+                if (packages_[i].getName() == batch.Name)
                     n = -1;
             }
 
