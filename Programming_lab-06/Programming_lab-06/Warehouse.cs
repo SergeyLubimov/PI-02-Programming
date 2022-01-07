@@ -76,9 +76,27 @@ namespace Programming_lab_06
     {
         private List<PackageOfGoods> packages_;
 
+        public static Warehouse operator +(Warehouse w1, Warehouse w2)
+        {
+            Warehouse warehouse = new Warehouse();
+
+            foreach (PackageOfGoods p in w1.packages_) warehouse.packages_.Add(p);
+            foreach (PackageOfGoods p in w2.packages_) warehouse.packages_.Add(p);
+
+            return warehouse;
+        }
+
         public Warehouse()
         {
             packages_ = new List<PackageOfGoods>();
+        }
+
+        public PackageOfGoods this[int index]
+        {
+            get
+            {
+                return packages_[index];
+            }
         }
 
         public void addBatchOfGoods(BatchOfGoods batch)
@@ -121,6 +139,6 @@ namespace Programming_lab_06
 
             return str;
             
-        }
+        }       
     }
 }

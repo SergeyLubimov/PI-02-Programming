@@ -22,9 +22,30 @@ namespace Programming_lab_06
             date_ = date;
         }
 
+        static public BatchOfGoods createRandom(string name)
+        {
+            BatchOfGoods batch = new BatchOfGoods();
+            Random rnd = new Random();
+
+            batch.Name = name;
+            batch.ID = rnd.Next(1, 99999999);
+            batch.Price = rnd.Next();
+            batch.Quantity = rnd.Next();
+            batch.Date = DateTime.Now;
+
+            return batch;
+        }
+
         public string Name
         {
-            get; set;
+            get
+            {
+                return name_;
+            }
+            set 
+            {
+                name_ = value;
+            }
         }
 
         public int ID
@@ -175,7 +196,6 @@ namespace Programming_lab_06
             str += String.Format("\n   | Date: {0}\n   ", date_.ToShortDateString());
 
             for (int i = 0; i < 18; i++) str += "-";
-
 
             return str;
         }

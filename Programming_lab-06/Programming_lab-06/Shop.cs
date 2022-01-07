@@ -12,6 +12,13 @@ namespace Programming_lab_06
         private float margin_;
         private SupplierOfGoods contract_with_supplier_;
 
+
+        public static Shop operator ++(Shop shop)
+        {
+            shop.cash_ += 10000;
+            return shop;
+        }
+
         public Shop()
         {
             margin_ = 1;
@@ -19,12 +26,9 @@ namespace Programming_lab_06
             cash_ = 0;
             warehouse_ = new Warehouse();
         }
-        public Shop(string name)
+        public Shop(string name): this()
         {
-            margin_ = 1;
             name_ = name;
-            cash_ = 0;
-            warehouse_ = new Warehouse();
         }
         public void setMargin(int percent)
         {
@@ -83,5 +87,7 @@ namespace Programming_lab_06
 
             Console.WriteLine(str + warehouse_.getPackagesAsString());
         }
+
+        
     }
 }
