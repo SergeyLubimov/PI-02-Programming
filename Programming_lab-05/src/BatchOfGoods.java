@@ -9,7 +9,17 @@ public class BatchOfGoods
 	private float price_;
 	private int quantity_;
 	private Date date_;
-	private SimpleDateFormat date_format_;
+	private static SimpleDateFormat date_format_;
+	
+	static 
+	{
+		date_format_ = new SimpleDateFormat("dd.MM.yyyy");
+	}
+	
+	public static void setDateFormat(String frmt)
+	{		
+		date_format_ = new SimpleDateFormat(frmt);
+	}
 	
 	public BatchOfGoods()
 	{
@@ -18,7 +28,6 @@ public class BatchOfGoods
 		price_ = 0;
 		quantity_ = 0;
 		date_ = null;
-		date_format_ = new SimpleDateFormat("dd.MM.yyyy");
 	}
 	
 	public BatchOfGoods(String name)

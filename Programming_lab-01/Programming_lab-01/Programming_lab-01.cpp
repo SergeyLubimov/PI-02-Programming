@@ -108,6 +108,10 @@ int main()
 	date1_ = ++date1;
 	date2_ = date2++;
 
+	Date date_sum = date1 + date2;
+
 	cout << "\nBefore:   " << date1_.getDateAsCharArray() << "  " << date2_.getDateAsCharArray();
 	cout << "\nAfter:    " << date1.getDateAsCharArray() << "  " << date2.getDateAsCharArray();
+	cout << "\nSum:            " << date_sum.getDateAsCharArray() << endl;
+
 }

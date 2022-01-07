@@ -12,6 +12,8 @@ namespace Programming_lab_06
         private int quantity_;
         private DateTime date_;
 
+        
+
         public BatchOfGoods()
         {
             name_ = "";

@@ -12,6 +12,14 @@ namespace Programming_lab_06
         private float margin_;
         private SupplierOfGoods contract_with_supplier_;
 
+        private static string str_ = "Checking a static field!";
+
+        public static string Str
+        {
+            get { return str_; }
+            set { str_ = value; }
+        }
+
 
         public static Shop operator ++(Shop shop)
         {
@@ -88,6 +96,7 @@ namespace Programming_lab_06
             Console.WriteLine(str + warehouse_.getPackagesAsString());
         }
 
+        
         
     }
 }

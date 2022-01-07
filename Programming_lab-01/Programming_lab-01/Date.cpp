@@ -7,6 +7,8 @@ Date::Date()
 	year_ = 0;
 }
 
+
+
 //Date::Date(int day, int month)
 //{
 //	setDay(day);
@@ -35,7 +37,7 @@ int Date::getYear()
 
 bool Date::setDay(int day)
 {
-	if (day > 0 && day <= 31)
+	if (day > 0 && day <= number_days_in_month)
 	{
 		day_ = day;
 		return true;
@@ -44,7 +46,7 @@ bool Date::setDay(int day)
 }
 bool Date::setMonht(int month)
 {
-	if (month > 0 && month <= 12)
+	if (month > 0 && month <= number_months_in_year)
 	{
 		month_ = month;
 		return true;
@@ -139,13 +141,34 @@ char* Date::getDateAsCharArray()
 	return str;
 }
 
+const Date& operator+(const Date& left, const Date& right)
+{
+	Date& date = *(new Date());
+
+	int day = left.day_ + left.month_ * Date::getNumberDaysInMonth() +
+		left.year_ * Date::getNumberDaysInYear();
+	day += right.day_ + right.month_ * Date::getNumberDaysInMonth() +
+		right.year_ * Date::getNumberDaysInYear();
+	day /= 2;
+
+	date.year_ = (int)(day / Date::getNumberDaysInYear());
+	day -= date.year_ * Date::getNumberDaysInYear();
+
+	date.month_ = (int)(day / Date::getNumberDaysInMonth());
+	day -= date.month_ * Date::getNumberDaysInMonth();
+
+	date.day_ = day;
+
+	return date;
+}
+
 const Date& operator++(Date& date)
 {
-	if (date.day_ < 31) date.day_++;
+	if (date.day_ < Date::getNumberDaysInMonth()) date.day_++;
 	else
 	{
 		date.day_ = 1;
-		if (date.month_ < 12) date.month_++;
+		if (date.month_ < Date::getNumberMonthsInYear()) date.month_++;
 		else
 		{
 			date.month_ = 1;
@@ -160,11 +183,11 @@ const Date& operator++(Date& date, int)
 	Date* old = new Date();
 
 	old->setDate(date.day_, date.month_, date.year_);
-	if (date.day_ < 31) date.day_++;
+	if (date.day_ < Date::getNumberDaysInMonth()) date.day_++;
 	else
 	{
 		date.day_ = 1;
-		if (date.month_ < 12) date.month_++;
+		if (date.month_ < Date::getNumberMonthsInYear()) date.month_++;
 		else
 		{
 			date.month_ = 1;

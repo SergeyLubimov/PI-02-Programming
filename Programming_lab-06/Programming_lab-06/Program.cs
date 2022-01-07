@@ -22,62 +22,11 @@ namespace Programming_lab_06
         //}
         static void Main(string[] args)
         {
-
-            SupplierOfGoods supplier = new SupplierOfGoods();
-            supplier.setMatgin(20);
-
-            Shop[] shops = new Shop[5];
-
-            for(int i = 0; i < shops.Length; i++)
-            {
-                shops[i] = new Shop();
-                shops[i].signContract(supplier);
-                shops[i].setName(String.Format($"Shop {i + 1}"));
-                shops[i].makeOrder(String.Format($"Good {i + 1}"), i + 1);
-            }
-
-            supplier.fulfillOrders();
-
-            for (int i = 0; i < shops.Length; i++)
-            {
-                shops[i].redeemOrders();
-                shops[i].displayAssortment();
-            }
-
-            string a, b;
-
-            a = "C#";
-
-            Func1(ref a);
-            Func2(out a);
-                        
-            Func2(out b);
-            Func1(ref b);
-
-            Shop shopA = new Shop("A");
-
-            shopA++;
-            ++shopA;
-            shopA.displayAssortment();
-
-            Warehouse w1 = new Warehouse();
-            Warehouse w2 = new Warehouse();
-
             BatchOfGoods b1 = BatchOfGoods.createRandom("A");
             BatchOfGoods b2 = BatchOfGoods.createRandom("B");
 
-            w1.addBatchOfGoods(b1);
-            w2.addBatchOfGoods(b2);
-
-            Warehouse sum = w1 + w2;
-
-            w1.getPackagesAsString();
-            w2.getPackagesAsString();
-            sum.getPackagesAsString();
-
-            Console.WriteLine($"\n\nW1:\n{w1.getPackagesAsString()}\n\n" +
-                $"W2:\n{w2.getPackagesAsString()}" + 
-                $"\n\nW1 + W2:\n{sum.getPackagesAsString()}");
+            Console.WriteLine($"A: {b1.getBatchAsStringWithoutName()}\n" +
+                $"B: {b2.getBatchAsStringWithoutName()}\n\n{Shop.Str}");
 
 
 
