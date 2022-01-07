@@ -20,15 +20,15 @@ public:
 
 	BatchOfGoods(std::string name, int id, float price, int quantity, Date date);
 
-	bool setNameOfGoods(std::string s);
+	void setNameOfGoods(std::string s);
 
-	bool setNameOfGoods(const char s[]);
+	void setNameOfGoods(const char s[]);
 
-	bool setIdOfGood(int id);
+	void setIdOfGood(int id);
 
-	bool setPriceOfGoods(int price);
+	void setPriceOfGoods(int price);
 
-	bool setQuantityOfGoods(int quantity);
+	void setQuantityOfGoods(int quantity);
 
 	bool setDateOfBatch(std::string str);
 

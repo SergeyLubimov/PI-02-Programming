@@ -25,58 +25,56 @@ BatchOfGoods::BatchOfGoods(std::string name, int id, float price, int quantity, 
 
 
 
-bool BatchOfGoods::setNameOfGoods(std::string s)
+void BatchOfGoods::setNameOfGoods(std::string s)
 {
-	if (s != "")
+	try
 	{
-		name_ = s;
-		return true;
+		if (s == "") throw "Empty name";
 	}
-	else false;
+	catch (const char* str)
+	{
+		std::cout << std::endl << str << std::endl;
+	}
+	name_ = s;
 }
 
-//bool BatchOfGoods::setNameOfGoods(const char s[])
-//{
-//	int size_str = strlen(s) + 1;
-//	if (s != 0)
-//	{
-//		if (name_ == 0) free(name_);
-//		
-//		name_ = new char[size_str];
-//		strcpy_s(name_, size_str, s);
-//		return true;
-//	}
-//	return false;
-//}
-
-bool BatchOfGoods::setIdOfGood(int id)
+void BatchOfGoods::setIdOfGood(int id)
 {
-	if (id >= 0 && id < 100000000)
+	try
 	{
-		ID_ = id;
-		return true;
+		if (id < 0 && id > 100000000) throw "Error ID";
 	}
-	else false;
+	catch (const char* str)
+	{
+		std::cout << std::endl << str << std::endl;
+	}	
+	ID_ = id;	
 }
 
-bool BatchOfGoods::setPriceOfGoods(int price)
+void BatchOfGoods::setPriceOfGoods(int price)
 {
-	if (price >= 0)
+	try
 	{
-		price_ = price;
-		return true;
+		if (price < 0) throw "Error Price";
 	}
-	else false;
+	catch(const char* str)
+	{
+		std::cout << std::endl << str << std::endl;
+	}
+	price_ = price;	
 }
 
-bool BatchOfGoods::setQuantityOfGoods(int quantity)
+void BatchOfGoods::setQuantityOfGoods(int quantity)
 {
-	if (quantity >= 0)
+	try
 	{
-		quantity_ = quantity;
-		return true;
+		if (quantity < 0) throw "Error Quantity";
 	}
-	else false;
+	catch (const char* str)
+	{
+		std::cout << std::endl << str << std::endl;
+	}	
+	quantity_ = quantity;		
 }
 
 bool BatchOfGoods::setDateOfBatch(std::string str)
@@ -196,111 +194,111 @@ void BatchOfGoods::resetQuantityOfGoods()
 	quantity_ = 0;
 }
 
-bool BatchOfGoods::launchNewBatchForm()
-{
-	std::string command;
-	bool is_right[5];
-
-	for (int i = 0; i < 5; i++) is_right[i] = false;
-
-	std::cout << "\n\nForm of creating a new batch:\n(enter \"!exit\" to exit the form)\n\n";
-
-	int i = -1;
-
-	while (i < 0 || ((command == "!exit") && !(is_right[0] && is_right[1] &&
-		is_right[2] && is_right[3] && is_right[4])))
-	{
-		switch (i)
-		{
-		case -1:
-		{
-			i = 0;
-		}
-		case 0:
-		{
-			std::cout << "\n  Enter the name: ";
-			break;
-		}
-		case 1:
-		{
-			std::cout << "\n  Enter the ID: ";
-			break;
-		}
-		case 2:
-		{
-			std::cout << "\n  Enter the price: ";
-			break;
-		}
-		case 3:
-		{
-			std::cout << "\n  Enter the quantity: ";
-			break;
-		}
-		case 4:
-		{
-			std::cout << "\n  Enter the date(dd.mm.yyyy): ";
-			break;
-		}
-		default: break;
-		}
-
-		std::cin >> command;
-
-		switch (i)
-		{
-		case 0:
-		{
-			is_right[i] = setNameOfGoods(command);
-			break;
-		}
-		case 1:
-		{
-			is_right[i] = checkWhetherInt(command) &&
-				setIdOfGood(stoi(command));
-			break;
-		}
-		case 2:
-		{
-			is_right[i] = checkWhetherInt(command) &&
-				setPriceOfGoods(stoi(command));
-			break;
-		}
-		case 3:
-		{
-			is_right[i] = checkWhetherInt(command) &&
-				setQuantityOfGoods(stoi(command));
-			break;
-		}
-		case 4:
-		{
-			is_right[i] = setDateOfBatch(command);
-			break;
-		}
-		default: break;
-		}
-
-		if (is_right[i] == false) std::cout << "\n\nError\n";
-		else i++;
-	}
-
-	if (is_right[0] && is_right[1] &&
-		is_right[2] && is_right[3] && is_right[4])
-	{
-		std::cout << "\n\nBatch:\n" <<
-			getBatchAsCharArray(2) << "\n\nIs it right?(y/n)\n";
-		char c;
-		{
-			std::cin >> c;
-		}
-		while (c != 'y' && c != 'n');
-
-		if (c == 'y')
-		{
-			return true;
-		}
-	}	
-	return false;
-}
+//bool BatchOfGoods::launchNewBatchForm()
+//{
+//	std::string command;
+//	bool is_right[5];
+//
+//	for (int i = 0; i < 5; i++) is_right[i] = false;
+//
+//	std::cout << "\n\nForm of creating a new batch:\n(enter \"!exit\" to exit the form)\n\n";
+//
+//	int i = -1;
+//
+//	while (i < 0 || ((command == "!exit") && !(is_right[0] && is_right[1] &&
+//		is_right[2] && is_right[3] && is_right[4])))
+//	{
+//		switch (i)
+//		{
+//		case -1:
+//		{
+//			i = 0;
+//		}
+//		case 0:
+//		{
+//			std::cout << "\n  Enter the name: ";
+//			break;
+//		}
+//		case 1:
+//		{
+//			std::cout << "\n  Enter the ID: ";
+//			break;
+//		}
+//		case 2:
+//		{
+//			std::cout << "\n  Enter the price: ";
+//			break;
+//		}
+//		case 3:
+//		{
+//			std::cout << "\n  Enter the quantity: ";
+//			break;
+//		}
+//		case 4:
+//		{
+//			std::cout << "\n  Enter the date(dd.mm.yyyy): ";
+//			break;
+//		}
+//		default: break;
+//		}
+//
+//		std::cin >> command;
+//
+//		switch (i)
+//		{
+//		case 0:
+//		{
+//			is_right[i] = setNameOfGoods(command);
+//			break;
+//		}
+//		case 1:
+//		{
+//			is_right[i] = checkWhetherInt(command) &&
+//				setIdOfGood(stoi(command));
+//			break;
+//		}
+//		case 2:
+//		{
+//			is_right[i] = checkWhetherInt(command) &&
+//				setPriceOfGoods(stoi(command));
+//			break;
+//		}
+//		case 3:
+//		{
+//			is_right[i] = checkWhetherInt(command) &&
+//				setQuantityOfGoods(stoi(command));
+//			break;
+//		}
+//		case 4:
+//		{
+//			is_right[i] = setDateOfBatch(command);
+//			break;
+//		}
+//		default: break;
+//		}
+//
+//		if (is_right[i] == false) std::cout << "\n\nError\n";
+//		else i++;
+//	}
+//
+//	if (is_right[0] && is_right[1] &&
+//		is_right[2] && is_right[3] && is_right[4])
+//	{
+//		std::cout << "\n\nBatch:\n" <<
+//			getBatchAsCharArray(2) << "\n\nIs it right?(y/n)\n";
+//		char c;
+//		{
+//			std::cin >> c;
+//		}
+//		while (c != 'y' && c != 'n');
+//
+//		if (c == 'y')
+//		{
+//			return true;
+//		}
+//	}	
+//	return false;
+//}
 
 BatchOfGoods* BatchOfGoods::cloneBarch()
 {

@@ -58,6 +58,8 @@ namespace Programming_lab_06
             }
             set 
             {
+                if (value == "")
+                    throw new ArgumentException("Error Name");
                 name_ = value;
             }
         }
@@ -67,10 +69,9 @@ namespace Programming_lab_06
             get { return ID_; }
             set
             {
-                if (Math.Log10(value) <= 8)
-                {
-                    ID_ = value;
-                }
+                if (Math.Log10(value) > 8)
+                    throw new ArgumentException("Error ID");                
+                ID_ = value;                
             }
         }
         public float Price
@@ -78,10 +79,9 @@ namespace Programming_lab_06
             get { return price_; }
             set
             {
-                if (value > 0)
-                {
-                    price_ = value;
-                }
+                if (value <= 0)
+                    throw new ArgumentException("Error Price");                
+                price_ = value;                
             }
         }
 
@@ -90,10 +90,9 @@ namespace Programming_lab_06
             get { return quantity_; }
             set
             {
-                if (value > 0)
-                {
-                    quantity_ = value;
-                }
+                if (value <= 0) 
+                    throw new ArgumentException("Error Quantity");                
+                quantity_ = value;                
             }
         }
 

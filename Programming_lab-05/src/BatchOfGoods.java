@@ -51,38 +51,35 @@ public class BatchOfGoods
 	public int getQuantity() {return quantity_;} 
 	public Date getDate() {return date_;}
 	
-	public void setName(String name)
+	public void setName(String name) 
 	{
+		if(name == "")
+			throw new IllegalArgumentException("Error Name");
+
 		name_ = name;
 	}
 	
-	public boolean setID(int id)
+	public void setID(int id)
 	{
-		if(Math.log10(id) < 8)
-		{
-			ID_ = id;
-			return true;
-		}
-		else return false;
+		if(Math.log10(id) >= 8) 
+			throw new IllegalArgumentException("Error ID");
+		ID_ = id;			
 	}
 	
-	public boolean setPrice(float price)
+	public void setPrice(float price)
 	{
-		if(price > 0)
-		{
-			price_ = price;
-			return true;
-		}
-		else return false;
+		if(price <= 0) 
+			throw new IllegalArgumentException("Error Price");		
+		price_ = price;
+		
 	}
-	public boolean setQuantity(int quantity)
+	public void setQuantity(int quantity)
 	{
-		if(quantity > 0)
-		{
-			quantity_ = quantity;
-			return true;
-		}
-		else return false;
+		if(quantity <= 0)
+			throw new IllegalArgumentException("Error Quantity");
+		
+		quantity_ = quantity;
+		
 	}
 	public void setDate(Date date)
 	{
