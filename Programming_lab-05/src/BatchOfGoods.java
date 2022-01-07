@@ -33,7 +33,16 @@ public class BatchOfGoods
 	public BatchOfGoods(String name)
 	{
 		this();
-		name_ = name;
+		setName(name);
+	}
+	
+	public BatchOfGoods(String name, int id, float price, int quantity, Date date)
+	{
+		setName(name);
+		setID(id);
+		setPrice(price);
+		setQuantity(quantity);
+		setDate(date);
 	}
 	
 	public String getName() {return name_;}

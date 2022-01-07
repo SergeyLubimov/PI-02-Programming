@@ -23,8 +23,6 @@ public:
 	void addBatch(BatchOfGoods* batch);
 
 	float sellGoods(std::string name, int* quantity);
-
-	//float sellGoods(const char name[], int* quantity);
 };
 
 class NodeWithPachage

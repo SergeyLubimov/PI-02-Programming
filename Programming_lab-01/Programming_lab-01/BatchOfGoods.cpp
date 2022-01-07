@@ -3,14 +3,30 @@
 BatchOfGoods::BatchOfGoods()
 {
 	name_ = "";
-	int ID_ = 0;
-	float price_ = 0;
-	int quantity_ = 0;
+	ID_ = 0;
+	price_ = 0;
+	quantity_ = 0;
 }
+
+BatchOfGoods::BatchOfGoods(std::string name)
+{
+	BatchOfGoods();
+	name_ = name;
+}
+
+BatchOfGoods::BatchOfGoods(std::string name, int id, float price, int quantity, Date date)
+{
+	name_ = name;
+	ID_ = id;
+	price_ = price;
+	quantity_ = quantity;
+	date_ = date;
+}
+
+
 
 bool BatchOfGoods::setNameOfGoods(std::string s)
 {
-	int size_str = s.length() + 1;
 	if (s != "")
 	{
 		name_ = s;

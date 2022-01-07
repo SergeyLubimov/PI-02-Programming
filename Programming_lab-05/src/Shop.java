@@ -16,10 +16,15 @@ public class Shop
      }
      public Shop(String name)
      {
-         margin_ = 1;
-         name_ = name;
-         cash_ = 0;
-         warehouse_ = new Warehouse();
+         this();
+         setName(name);
+     }
+     public Shop(String name, int percent, float cash)
+     {
+         this();
+         setName(name);
+         setMargin(percent);
+         cash_ = cash;
      }
      public void setMargin(int percent)
      {

@@ -10,8 +10,13 @@ public class SupplierOfGoods
           margin_ = 1;
           contracts_ = new ArrayList<Contract>();
       }
+      public SupplierOfGoods(int percent)
+      {
+    	  this();
+          setMargin(percent);
+      }
 
-      public void setMatgin(int percent)
+      public void setMargin(int percent)
       {
           margin_ = 1 + percent / 100;
       }

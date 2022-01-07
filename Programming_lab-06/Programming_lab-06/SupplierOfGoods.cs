@@ -14,8 +14,13 @@ namespace Programming_lab_06
             margin_ = 1;
             contracts_ = new List<Contract>();
         }
+        public SupplierOfGoods(int percent): this()
+        {
+            setMargin(percent);
+        }
 
-        public void setMatgin(int percent)
+
+        public void setMargin(int percent)
         {
             margin_ = 1 + percent / 100;
         }

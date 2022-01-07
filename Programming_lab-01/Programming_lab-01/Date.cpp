@@ -7,18 +7,42 @@ Date::Date()
 	year_ = 0;
 }
 
+Date::Date(std::string str)
+{
+	if (str != "" && (str.size() == 10))
+	{
+		int i = 0;
+		char c;
+		while (i < 10 && i > -1)
+		{
+			c = str[i];
+			i++;
+			if ((c < '0' || c > '9') && c != '.') i = -1;
+		}
+		if (i > -1)
+		{
+			int day = (str[0] - '0') * 10 + (str[1] - '0');
+
+			int month = (str[3] - '0') * 10 + (str[4] - '0');
+
+			int year = (str[6] - '0') * 1000 + (str[7] - '0') * 100 +
+				(str[8] - '0') * 10 + (str[9] - '0');
+		}
+	}
+}
+
+Date::Date(int day, int month, int year)
+{
+	setDay(day);
+	setMonht(month);
+	setYear(year);
+}
+
+int Date::number_days_in_year = 365;
+int Date::number_days_in_month = 30;
+int Date::number_months_in_year = 12;
 
 
-//Date::Date(int day, int month)
-//{
-//	setDay(day);
-//	setMonht(month);
-//}
-//
-//Date::Date(int day, int month, int year)
-//{
-//	this(day, month);
-//}
 
 int Date::getDay()
 {

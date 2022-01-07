@@ -10,9 +10,7 @@ namespace Programming_lab_06
         private int ID_;
         private float price_;
         private int quantity_;
-        private DateTime date_;
-
-        
+        private DateTime date_;        
 
         public BatchOfGoods()
         {
@@ -23,6 +21,20 @@ namespace Programming_lab_06
             DateTime date = new DateTime();
             date_ = date;
         }
+
+        public BatchOfGoods(string name): this()
+        {
+            this.Name = name;
+        }
+        public BatchOfGoods(string name, int id, float price, int quantity, DateTime date)
+        {
+            this.Name = name;
+            this.ID = id;
+            this.Price = price;
+            this.Quantity = quantity;
+            this.Date = date;
+        }
+
 
         static public BatchOfGoods createRandom(string name)
         {

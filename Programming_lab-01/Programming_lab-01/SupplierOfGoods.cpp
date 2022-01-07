@@ -7,6 +7,11 @@ SupplierOfGoods::SupplierOfGoods()
 	margin_ = 1;
 }
 
+SupplierOfGoods::SupplierOfGoods(int percent)
+{
+	margin_ = 1 + percent / 100;
+}
+
 void SupplierOfGoods::addContract(Shop* shop)
 {
 	contracts_with_shops_.push_back(shop);

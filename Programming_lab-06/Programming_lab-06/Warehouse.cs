@@ -14,10 +14,9 @@ namespace Programming_lab_06
             name_ = "";
             batchs_ = new List<BatchOfGoods>();
         }
-        public PackageOfGoods(string name)
+        public PackageOfGoods(string name): this()
         {
             name_ = name;
-            batchs_ = new List<BatchOfGoods>();
         }
         public PackageOfGoods(BatchOfGoods batch)
         {

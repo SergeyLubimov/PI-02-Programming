@@ -9,6 +9,19 @@ Shop::Shop()
 	margin_ = 1;
 }
 
+Shop::Shop(std::string name)
+{
+	Shop();
+	name = name_;
+}
+
+Shop::Shop(std::string name, int percent_margin, float cash)
+{
+	cash_ = cash;
+	name_ = name;
+	margin_ = 1 + percent_margin / 100;
+}
+
 void Shop::setMargin(unsigned percent)
 {
 	margin_ = 1 + float(percent) / 100;
@@ -16,32 +29,15 @@ void Shop::setMargin(unsigned percent)
 
 bool Shop::setNameOfShop(std::string name)
 {
-	//int size_str = strlen(name) + 1;
 	if (name != "")
-	{
-		//if (name_ == 0) delete name_;
-
-		/*name_ = new char[size_str];*/
+	{		
 		name_ = name;
-
 		return true;
 	}
 	else false;
 }
 
-//bool Shop::setNameOfShop(const char s[])
-//{
-//	int size_str = strlen(s) + 1;
-//	if (s != 0)
-//	{
-//		if (name_ == 0) delete name_;
-//
-//		name_ = new char[size_str];
-//		strcpy_s(name_, size_str, s);
-//		return true;
-//	}
-//	return false;
-//}
+
 
 void Shop::addBatch(BatchOfGoods* batch)
 {	

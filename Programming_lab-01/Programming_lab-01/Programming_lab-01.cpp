@@ -11,107 +11,103 @@
 using namespace std;
 
 
+class A
+{
+public: 
+
+	string str_;
+	Date* date_;
+
+	A()
+	{
+		str_ = "";
+		date_ = new Date();
+	}
+	A(A& source)
+	{
+		delete this->date_;
+
+		this->str_ = source.str_;
+
+		if (source.date_ != NULL)
+			this->date_ = new Date(source.date_->getDay(), 
+				source.date_->getMonht(), source.date_->getYear());
+
+		else this->date_ = nullptr;
+	}
+
+	A& operator=(const A& source)
+	{		
+		if (this != &source)
+		{
+			delete this->date_;
+
+			this->str_ = source.str_;
+
+			if (source.date_ != NULL)
+				this->date_ = new Date(source.date_->getDay(),
+					source.date_->getMonht(), source.date_->getYear());
+
+			else this->date_ = nullptr;
+		}
+
+		return *this;
+	}
+};
 
 
 int main()
 { 
+	Date date1;
+	Date date2("10.02.2003");
+	Date date3 = Date(10, 2, 2003);
+	Date* date4 = new Date();
+	Date* date5 = new Date("10.02.2003");;
+	Date* date6 = new Date(10, 2, 2003);
 
-	//BatchOfGoods *b = new BatchOfGoods();
+	BatchOfGoods batch1;
+	BatchOfGoods batch2("Good");
+	BatchOfGoods batch3("Good", 8845, 10, 5, date2);
+	BatchOfGoods *batch4 = new BatchOfGoods();
+	BatchOfGoods *batch5 = new BatchOfGoods("Good");
+	BatchOfGoods *batch6 = new BatchOfGoods("Good", 8845, 10, 5, date2);
 
-	//b->setNameOfGoods("A");
-	//b->setIdOfGood(5464578);
-	//b->setPriceOfGoods(1);
-	//b->setQuantityOfGoods(20);
-	//b->setDateOfBatch("20.02.2003");
+	PackageOfBatchesOfGoods package1;
+	PackageOfBatchesOfGoods package2("Good");
+	PackageOfBatchesOfGoods* package3 = new PackageOfBatchesOfGoods();
+	PackageOfBatchesOfGoods* package4 = new PackageOfBatchesOfGoods("Good");
 
-	//PackageOfBatchesOfGoods p;
+	Warehouse warehouse1;
+	Warehouse *warehouse2 = new Warehouse();
 
-	//p.addBatch(b); 
+	Shop shop1;
+	Shop shop2("Shop");
+	Shop shop3("Good", 20, 10000);
+	Shop *shop4 = new Shop();
+	Shop *shop5 = new Shop("Shop");
+	Shop *shop6 = new Shop("Good", 20, 10000);
 
-	//int q = 10;
+	SupplierOfGoods supplier1;
+	SupplierOfGoods supplier2(15);
+	SupplierOfGoods* supplier3 = new SupplierOfGoods();
+	SupplierOfGoods* supplier4 = new SupplierOfGoods(15);
 
-	////Через указатель
-	//p.sellGoods(&q);
+	Date *date[5];
 
-	//cout << q << endl;
+	for (int i = 0; i < 5; i++) 
+		date[i] = new Date("10.10.2010");
 
-	//q = 15;
+	A a, copy;
 
-	////По ссылке
-	//p.sellGoods(q);
+	a.str_ = "Hallo";
+	a.date_->setDateAsCharArray("10.10.2002");
 
-	//cout << q << endl;
+	copy = a;
 
-	
+	copy.str_= "Yyyy";
+	copy.date_->setDateAsCharArray("01.01.2001");
 
-	SupplierOfGoods supplier;
+	cout << a.date_->getDateAsCharArray() << endl << a.str_;
 
-	supplier.setMargin(20);
-	
-	Shop shopA, shopB;
-
-	shopA.setNameOfShop("Shop A");
-	shopB.setNameOfShop("Shop B");
-
-	shopA.setMargin(10);
-	shopB.setMargin(15);
-
-	supplier.addContract(&shopA);
-	supplier.addContract(&shopB);
-
-	shopA.signContract(&supplier);
-	shopB.signContract(&supplier);
-
-	shopA.investMoney(10000);
-	shopB.investMoney(10000);
-
-	shopA.displayAssortment();
-	shopB.displayAssortment();
-
-	shopA.makeOrder("A", 150);
-	shopB.makeOrder("A", 150);
-	shopB.makeOrder("B", 30);
-
-	supplier.fulfillOrders();
-
-	shopA.redeemOrders();
-	shopB.redeemOrders();
-
-	shopA.displayAssortment();
-	shopB.displayAssortment();
-
-	Customer customer;
-
-	customer.rememberShop(&shopA);
-	customer.rememberShop(&shopB);
-
-	int q1 = customer.buyGoods("A", 160);
-	int q2 = customer.buyGoods("B", 40);
-
-	shopA.displayAssortment();
-	shopB.displayAssortment();
-
-	if (q1 > 0)
-		cout << "\n\nThe product A is over. Missing " << q1 << '\n';
-
-	if (q2 > 0)
-		cout << "\n\nThe product B is over. Missing " << q2 << '\n';
-
-	Date date1, date1_, date2, date2_;
-
-	date1.setDateAsCharArray("31.10.2010");
-	date2.setDateAsCharArray("31.12.2010");
-
-	cout << "\n\nOriginal: " << date1.getDateAsCharArray() << "  " << date2.getDateAsCharArray();
-	
-
-	date1_ = ++date1;
-	date2_ = date2++;
-
-	Date date_sum = date1 + date2;
-
-	cout << "\nBefore:   " << date1_.getDateAsCharArray() << "  " << date2_.getDateAsCharArray();
-	cout << "\nAfter:    " << date1.getDateAsCharArray() << "  " << date2.getDateAsCharArray();
-	cout << "\nSum:            " << date_sum.getDateAsCharArray() << endl;
-
+		
 }

@@ -22,68 +22,23 @@ namespace Programming_lab_06
         //}
         static void Main(string[] args)
         {
-            BatchOfGoods b1 = BatchOfGoods.createRandom("A");
-            BatchOfGoods b2 = BatchOfGoods.createRandom("B");
+            BatchOfGoods batch1 = new BatchOfGoods();
+            BatchOfGoods batch2 = new BatchOfGoods("Good");
+            BatchOfGoods batch3 = new BatchOfGoods("Good", 8754, 10, 20, new DateTime());
 
-            Console.WriteLine($"A: {b1.getBatchAsStringWithoutName()}\n" +
-                $"B: {b2.getBatchAsStringWithoutName()}\n\n{Shop.Str}");
+            PackageOfGoods package1 = new PackageOfGoods();
+            PackageOfGoods package2 = new PackageOfGoods("Good");
 
+            Warehouse warehouse = new Warehouse();
 
+            Customer customer = new Customer();
 
-            //SupplierOfGoods supplier = new SupplierOfGoods();
+            SupplierOfGoods supplier1 = new SupplierOfGoods();
+            SupplierOfGoods supplier2 = new SupplierOfGoods(20);
 
-            //supplier.setMatgin(20);
-
-            //Shop shopA, shopB;
-
-            //shopA = new Shop();
-            //shopB = new Shop();
-
-            //shopA.setName("Shop A");
-            //shopB.setName("Shop B");
-
-            //shopA.setMargin(10);
-            //shopA.setMargin(15);
-
-            //supplier.addContract(shopA);
-            //supplier.addContract(shopB);
-
-            //shopA.signContract(supplier);
-            //shopB.signContract(supplier);
-
-            //shopA.investMoney(10000);
-            //shopB.investMoney(10000);
-
-            //shopA.displayAssortment();
-            //shopB.displayAssortment();
-
-            //shopA.makeOrder("A", 150);
-            //shopB.makeOrder("A", 150);
-            //shopB.makeOrder("B", 30);
-
-            //supplier.fulfillOrders();
-
-            //shopA.redeemOrders();
-            //shopB.redeemOrders();
-
-            //shopA.displayAssortment();
-            //shopB.displayAssortment();
-
-            //Customer customer = new Customer();
-
-            //customer.rememberShop(shopA);
-            //customer.rememberShop(shopB);
-
-            //int q1 = customer.buyGoods("A", 160);
-            //int q2 = customer.buyGoods("B", 40);
-
-            //shopA.displayAssortment();
-            //shopB.displayAssortment();
-
-            //if (q1 > 0)
-            //    Console.WriteLine($"\n\nThe product A is over. Missing {q1}\n");
-            //if (q2 > 0)
-            //    Console.WriteLine($"\n\nThe product B is over. Missing {q2}\n");
+            Shop shop1 = new Shop();
+            Shop shop2 = new Shop("Shop");
+            Shop shop3 = new Shop("Good", 20, 10000);
         }
     }
 }

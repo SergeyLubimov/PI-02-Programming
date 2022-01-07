@@ -16,17 +16,17 @@ private:
 public:
 	Shop();
 
+	Shop(std::string name);
+
+	Shop(std::string name, int percent_margin, float cash);
+
 	void setMargin(unsigned percent);
 
 	bool setNameOfShop(std::string name);
 
-	//bool setNameOfShop(const char s[]);
-
 	void addBatch(BatchOfGoods* batch);
 
 	bool sellGoods(std::string name, int* q);
-
-	//bool sellGoods(const char name[], int* q);
 
 	void displayAssortment();
 

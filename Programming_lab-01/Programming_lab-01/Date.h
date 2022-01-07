@@ -15,7 +15,16 @@ private:
 	static int number_months_in_year;
 
 public:
+
+	/*int number_days_in_year = 365;
+	int number_days_in_month = 30;
+	int number_months_in_year = 12;*/
+
 	Date();
+
+	Date(std::string str);
+
+	Date(int day, int month, int year);
 
 	int getDay();
 
@@ -48,6 +57,3 @@ public:
 	static int getNumberMonthsInYear() { return number_months_in_year; }
 };
 
-int Date::number_days_in_year = 365;
-int Date::number_days_in_month = 30;
-int Date::number_months_in_year = 12;

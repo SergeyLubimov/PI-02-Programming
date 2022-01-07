@@ -16,7 +16,9 @@ private:
 public:
 	BatchOfGoods();
 
-	~BatchOfGoods();
+	BatchOfGoods(std::string name);
+
+	BatchOfGoods(std::string name, int id, float price, int quantity, Date date);
 
 	bool setNameOfGoods(std::string s);
 

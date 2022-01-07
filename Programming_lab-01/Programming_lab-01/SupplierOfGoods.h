@@ -20,6 +20,8 @@ private:
 public:
 	SupplierOfGoods();
 
+	SupplierOfGoods(int percent);
+
 	void addContract(Shop* shop);
 
 	void setMargin(unsigned percent);

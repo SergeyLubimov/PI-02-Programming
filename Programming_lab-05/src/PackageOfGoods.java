@@ -13,8 +13,8 @@ public class PackageOfGoods
 	}
 	public PackageOfGoods(String name)
     {
-        name_ = name;
-        batchs_ = new ArrayList<BatchOfGoods>();
+		this();
+        setName(name);
     }
 	public void setName(String name)
 	{

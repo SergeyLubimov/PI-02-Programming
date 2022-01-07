@@ -9,6 +9,12 @@ PackageOfBatchesOfGoods::PackageOfBatchesOfGoods()
 	package_size_ = 0;
 }
 
+PackageOfBatchesOfGoods::PackageOfBatchesOfGoods(std::string name)
+{
+	PackageOfBatchesOfGoods();
+	name_ = name;
+}
+
 PackageOfBatchesOfGoods::~PackageOfBatchesOfGoods()
 {
 	NodeWithBatch *buff, *node = head_;

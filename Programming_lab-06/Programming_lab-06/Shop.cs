@@ -33,10 +33,16 @@ namespace Programming_lab_06
             name_ = "";
             cash_ = 0;
             warehouse_ = new Warehouse();
+            contract_with_supplier_ = null;
         }
         public Shop(string name): this()
+        {            
+            this.setName(name);
+        }
+        public Shop(String name, int percent, float cash): this(name)
         {
-            name_ = name;
+            setMargin(percent);
+            cash_ = cash;
         }
         public void setMargin(int percent)
         {

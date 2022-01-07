@@ -1,5 +1,5 @@
 
-
+import java.util.*;
 
 public class Programming_lab_05 
 {
@@ -11,35 +11,22 @@ public class Programming_lab_05
 		
 	public static void main(String[] args)
 	{
-		SupplierOfGoods supplier = new SupplierOfGoods();
+		BatchOfGoods batch1 = new BatchOfGoods();
+		BatchOfGoods batch2 = new BatchOfGoods("Good");
+		BatchOfGoods batch3 = new BatchOfGoods("Good", 8754, 10, 20, new Date());
 		
-		Shop[] shops = new Shop[5];
+		PackageOfGoods package1 = new PackageOfGoods();
+		PackageOfGoods package2 = new PackageOfGoods("Good");
 		
-		for(int i = 0; i < shops.length; i++)
-		{
-			shops[i] = new Shop(String.format("Shop %d", i + 1));
-			shops[i].signContract(supplier);
-			supplier.addContract(shops[i]);
-			shops[i].investMoney(10000);
-			shops[i].makeOrder(String.format("Goood %d", i + 1), i + 1);
-		}		
+		Warehouse warehouse = new Warehouse();
 		
-		supplier.fulfillOrders();
+		Customer customer = new Customer();
 		
-		for(Shop shop: shops)
-		{
-			shop.redeemOrders();
-			//shop.displayAssortment();
-		}
-		
-		shops[0].displayAssortment();
-		
-		BatchOfGoods.setDateFormat("d MMMM yyyy G");
-		
-		shops[0].displayAssortment();
-		
-		
-		
-		
+		SupplierOfGoods supplier1 = new SupplierOfGoods();
+		SupplierOfGoods supplier2 = new SupplierOfGoods(20);
+	
+		Shop shop1 = new Shop();
+		Shop shop2 = new Shop("Shop");
+		Shop shop3 = new Shop("Good", 20, 10000);		
 	}
 }

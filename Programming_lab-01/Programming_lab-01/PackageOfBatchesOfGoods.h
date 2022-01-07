@@ -20,6 +20,8 @@ public:
 
 	PackageOfBatchesOfGoods();
 
+	PackageOfBatchesOfGoods(std::string name);
+
 	~PackageOfBatchesOfGoods();
 
 	void addBatch(BatchOfGoods* batch);
