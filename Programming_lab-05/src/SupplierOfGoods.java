@@ -39,7 +39,6 @@ public class SupplierOfGoods
           boolean ret = false;
           if (n < 0)
           {
-              ret = true;
               contracts_.get(i - 1).orders_.add(new Order(name, quantity));
           }
           return ret;            

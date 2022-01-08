@@ -8,10 +8,12 @@ class BatchOfGoods
 { 
 private:
 	std::string name_;
-	int ID_;
-	float price_;
+	int ID_;		
 	int quantity_;
 	Date date_;
+
+protected:
+	float price_;
 
 public:
 	BatchOfGoods();

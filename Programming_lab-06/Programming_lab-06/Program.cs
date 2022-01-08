@@ -22,16 +22,45 @@ namespace Programming_lab_06
         //}
         static void Main(string[] args)
         {
-            try
-            {
-                BatchOfGoods batch = new BatchOfGoods();
-                batch.Price = -200;
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message + '\n');
-            }
+			SupplierOfGoods supplier = new SupplierOfGoods();
 
-        }
-    }
+			Shop[] shopsA = new Shop[3];
+
+			for (int i = 0; i < 3; i++)
+			{
+				shopsA[i] = new Shop($"Shop A{i + 1}", 20, 10000);
+				shopsA[i].signContract(supplier);
+				shopsA[i].makeOrder("A", i + 1);
+				Console.Write(shopsA[i].getName() + ' ');
+			}
+			Console.WriteLine("\n");
+
+			Shop[,] shopsB = new Shop[3, 3];
+
+			for (int i = 0; i < 3; i++)
+			{
+				for (int j = 0; j < 3; j++)
+				{
+					shopsB[i, j] = new Shop($"Shop B{i * 3 + j + 1}", 20, 10000);
+					shopsB[i, j].signContract(supplier);
+					shopsB[i, j].makeOrder("B", i * 3 + j + 1);
+					Console.Write(shopsB[i, j].getName() + ' ');
+
+				}
+				Console.WriteLine("");
+			}
+			supplier.fulfillOrders();
+
+			for (int i = 0; i < 3; i++)
+			{
+				shopsA[i].redeemOrders();
+				shopsA[i].displayAssortment();
+				for (int j = 0; j < 3; j++)
+				{
+					shopsB[i, j].redeemOrders();
+					shopsB[i, j].displayAssortment();
+				}
+			}
+		}
+	}
 }

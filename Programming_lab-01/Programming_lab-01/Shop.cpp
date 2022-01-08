@@ -22,6 +22,11 @@ Shop::Shop(std::string name, int percent_margin, float cash)
 	margin_ = 1 + percent_margin / 100;
 }
 
+std::string Shop::getName()
+{
+	return name_;
+}
+
 void Shop::setMargin(unsigned percent)
 {
 	margin_ = 1 + float(percent) / 100;

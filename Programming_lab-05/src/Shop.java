@@ -37,6 +37,7 @@ public class Shop
      public void signContract(SupplierOfGoods supplier)
      {
          contract_with_supplier_ = supplier;
+         supplier.addContract(this);
      }
     
 

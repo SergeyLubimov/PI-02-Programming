@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BatchOfFoodGoods.cpp" />
     <ClCompile Include="BatchOfGoods.cpp" />
     <ClCompile Include="Convert.cpp" />
     <ClCompile Include="ConvertIntToString.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="Сustomer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BatchOfFoodGoods.h" />
     <ClInclude Include="BatchOfGoods.h" />
     <ClInclude Include="Convert .h" />
     <ClInclude Include="ConvertIntToCharArray.h" />

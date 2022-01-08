@@ -20,6 +20,8 @@ public:
 
 	Shop(std::string name, int percent_margin, float cash);
 
+	std::string getName();
+
 	void setMargin(unsigned percent);
 
 	bool setNameOfShop(std::string name);
