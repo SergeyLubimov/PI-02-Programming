@@ -13,6 +13,8 @@ namespace Programming_lab_06
         //    shop_in_mind_ = new List<Shop>();
         //}
 
+        public string check_string_;
+
         public List<Shop> Mind
         {
             get { return shop_in_mind_; }

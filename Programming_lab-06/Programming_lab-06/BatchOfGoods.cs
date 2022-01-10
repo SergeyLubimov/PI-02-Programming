@@ -24,7 +24,14 @@ namespace Programming_lab_06
 
         public string Name
         {
-            get; set;
+            get
+            {
+                return name_;
+            }
+            set
+            {
+                name_ = value;
+            }
         }
 
         public int ID

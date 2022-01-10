@@ -7,8 +7,19 @@ namespace Programming_lab_06
         static void Main(string[] args)
         {
 
+            BatchOfGoods batch = new BatchOfGoods();
+            Customer customer = new Customer();
 
+            batch.Name = "Original value for Batch\n";
+            customer.check_string_ = "Original value for Customer\n";
 
+            BatchOfGoods batch1 = batch;
+            Customer customer1 = customer;
+
+            batch1.Name = "New value for Batch\n";
+            customer1.check_string_ = "New value for Customer\n";
+
+            Console.WriteLine(batch.Name + customer.check_string_);
 
 
             SupplierOfGoods supplier = new SupplierOfGoods();
@@ -25,6 +36,7 @@ namespace Programming_lab_06
             }
 
             supplier.fulfillOrders();
+
             Customer[] customers = new Customer[5];
 
             for (int i = 0; i < shops.Length; i++)
@@ -45,6 +57,10 @@ namespace Programming_lab_06
             }
 
             foreach (Shop shop in shops) shop.displayAssortment();
+
+
+
+
 
 
 
