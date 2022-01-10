@@ -1,2 +1,20 @@
-﻿  Programming_lab-01.cpp
+﻿  BatchOfFoodGoods.cpp
+  BatchOfGoods.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfGoods.cpp(64,11): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+  Convert.cpp
+  ConvertIntToString.cpp
+  Date.cpp
+  SupplierOfGoods.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.cpp(12,14): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\SupplierOfGoods.cpp(63,49): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  PachageOfBatchesOfGoods.cpp
+  Programming_lab-01.cpp
+  Shop.cpp
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(22,14): warning C4244: =: преобразование "int" в "float", возможна потеря данных
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(49,43): warning C4244: аргумент: преобразование "float" в "int", возможна потеря данных
+  Warehouse.cpp
+  Сustomer.cpp
+  Создание кода...
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\Shop.cpp(43): warning C4715: Shop::setNameOfShop: значение возвращается не при всех путях выполнения
+G:\PI-02\PI-02-Programming\Programming_lab-01\Programming_lab-01\BatchOfFoodGoods.cpp(38): warning C4717: BatchOfFoodGoods::getBatchAsCharArray: рекурсия на всех путях выполнения, функция вызовет переполнение стека
   Programming_lab-01.vcxproj -> G:\PI-02\PI-02-Programming\Programming_lab-01\Debug\Programming_lab-01.exe

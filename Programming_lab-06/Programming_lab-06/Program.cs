@@ -22,6 +22,9 @@ namespace Programming_lab_06
         //}
         static void Main(string[] args)
         {
+			Console.WriteLine("\x1e");
+
+
 			SupplierOfGoods supplier = new SupplierOfGoods();
 
 			Shop[] shopsA = new Shop[3];
