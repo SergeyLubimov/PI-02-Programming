@@ -5,11 +5,24 @@
 class BatchOfFoodGoods: protected BatchOfGoods
 {
 private:
-	Date expiration_date_;
+	int days_before_expiration_date_;
 
 public:
 
 	BatchOfFoodGoods() : BatchOfGoods() 
+	{
+		days_before_expiration_date_ = 0;
+	}
+
+	BatchOfFoodGoods(int days) : BatchOfGoods()
+	{
+		days_before_expiration_date_ = days;
+	}
+
+
+
+
+	/*BatchOfFoodGoods() : BatchOfGoods() 
 	{
 		expiration_date_ = getDate();
 	}
@@ -17,11 +30,11 @@ public:
 	BatchOfFoodGoods(int period_in_days);
 
 	void checkingFreshness();
-	std::string getBatchAsCharArray(int n);
+	std::string getBatchAsCharArray(int n);*/
 
 	//void func();
 
-	BatchOfFoodGoods& operator=(BatchOfGoods& source)
+	/*BatchOfFoodGoods& operator=(BatchOfGoods& source)
 	{
 		if (this != &source)
 		{
@@ -34,7 +47,7 @@ public:
 		}
 
 		return *this;
-	}
+	}*/
 };
 
 class C : protected BatchOfFoodGoods

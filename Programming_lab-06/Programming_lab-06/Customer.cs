@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Programming_lab_06
 {
-    class Customer
+    class Customer : ICustomer
     {
         private List<Shop> shop_in_mind_;
 

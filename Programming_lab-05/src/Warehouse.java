@@ -1,8 +1,18 @@
 import java.util.ArrayList;
 
-public class Warehouse
+public class Warehouse implements Cloneable 
 {
 	private ArrayList<PackageOfGoods> packages_;
+	
+	@Override
+    public Warehouse clone() throws CloneNotSupportedException
+    {
+        Warehouse copy = (Warehouse) super.clone();
+        copy.packages_ = (ArrayList<PackageOfGoods>) this.packages_.clone();
+        //Driver driver = this.getDriver().clone();
+        //newCar.setDriver(driver);
+        return copy;
+    }
 	
 	public Warehouse()
     {

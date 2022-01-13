@@ -1,41 +1,41 @@
 #include "BatchOfFoodGoods.h"
 
 
-BatchOfFoodGoods::BatchOfFoodGoods(int period_in_days) : BatchOfGoods()
-{
-	while (period_in_days > 0)
-	{
-		expiration_date_++;
-		period_in_days--;
-	}
-}
-
-//void BatchOfFoodGoods::func()
+//BatchOfFoodGoods::BatchOfFoodGoods(int period_in_days) : BatchOfGoods()
 //{
-//	//name_;
-//	setNameOfGoods("Name");
+//	while (period_in_days > 0)
+//	{
+//		expiration_date_++;
+//		period_in_days--;
+//	}
 //}
-
-void BatchOfFoodGoods::checkingFreshness()
-{
-	Date date = getDate();
-
-	int difference = expiration_date_.getYear() - date.getYear();
-
-	if (difference == 0)
-	{
-		difference = expiration_date_.getMonht() - date.getMonht();
-		if (difference == 0)
-			difference = expiration_date_.getDay() - date.getDay();
-	}
-	if (difference <= 0) price_ = 0;
-}
-
-std::string BatchOfFoodGoods::getBatchAsCharArray(int n)
-{
-	checkingFreshness();
-	return getBatchAsCharArray(n);
-}
+//
+////void BatchOfFoodGoods::func()
+////{
+////	//name_;
+////	setNameOfGoods("Name");
+////}
+//
+//void BatchOfFoodGoods::checkingFreshness()
+//{
+//	Date date = getDate();
+//
+//	int difference = expiration_date_.getYear() - date.getYear();
+//
+//	if (difference == 0)
+//	{
+//		difference = expiration_date_.getMonht() - date.getMonht();
+//		if (difference == 0)
+//			difference = expiration_date_.getDay() - date.getDay();
+//	}
+//	if (difference <= 0) price_ = 0;
+//}
+//
+//std::string BatchOfFoodGoods::getBatchAsCharArray(int n)
+//{
+//	checkingFreshness();
+//	return getBatchAsCharArray(n);
+//}
 
 //std::string BatchOfFoodGoods::getBatchAsCharArray(int n)
 //{

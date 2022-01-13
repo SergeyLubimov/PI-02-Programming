@@ -71,9 +71,16 @@ namespace Programming_lab_06
             return str;
         }
     }
-    class Warehouse
+    class Warehouse: ICloneable
     {
         private List<PackageOfGoods> packages_;
+
+        public object Clone()
+        {
+            Warehouse copy = new Warehouse();
+            copy.packages_ = new List<PackageOfGoods>(this.packages_);
+            return copy;
+        }
 
         public static Warehouse operator +(Warehouse w1, Warehouse w2)
         {

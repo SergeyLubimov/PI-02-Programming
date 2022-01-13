@@ -2,7 +2,8 @@
 //
 
 #include "SupplierOfGoods.h"
-#include "BatchOfFoodGoods.h"
+#include "ShopWithShowcase.h"
+#include "SelectiveCustomer.h"
 #include "Customer.h"
 #include <iostream>
 #include <list>
@@ -59,60 +60,61 @@ public:
 
 int main()
 { 
-	/*Date d, d2;
+	Shop* sh1, * sh2;
 
-	d.setDate(20, 2, 2003);
+	sh1 = new Shop();
+	ShopWithShowcase* sws = new ShopWithShowcase();
 
-	cout << d.getDateAsCharArray();
+	sh2 = sws;
 
-	d2 = d;
-
-	d2.setDate(1, 1, 1999);
-
-	cout << d.getDateAsCharArray();*/
-
-
-	SupplierOfGoods supplier;
-
-	Shop shopsA[3];
-
-	for (int i = 0; i < 3; i++)
-	{
-		shopsA[i] = Shop("Shop A" + to_string(i + 1), 20, 10000);
-		shopsA[i].signContract(&supplier);
-		shopsA[i].makeOrder("A", i + 1);
-		cout << shopsA[i].getName() + ' ';
-	}
-	cout << "\n\n";
-
-	Shop shopsB[3][3];
-
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			shopsB[i][j] = Shop("Shop B" + to_string(i * 3 + j + 1), 20, 10000);
-			shopsB[i][j].signContract(&supplier);
-			shopsB[i][j].makeOrder("B", i * 3 + j + 1);
-			cout << shopsB[i][j].getName() + ' ';
-			
-		}
-		cout << endl;
-	}
-	supplier.fulfillOrders();
-
-	for (int i = 0; i < 3; i++)
-	{
-		shopsA[i].redeemOrders();
-		shopsA[i].displayAssortment();
-		for (int j = 0; j < 3; j++)
-		{
-			shopsB[i][j].redeemOrders();
-			shopsB[i][j].displayAssortment();
-		}
-	}
+	sh1->setMargin(10);
+	sh2->setMargin(10);
 
 
 
 
+
+	BatchOfGoods* batch1, *batch2, *batch3;
+
+	batch1 = new BatchOfGoods("A", 54654, 10, 100, *(new Date(20, 1, 2020)));
+	batch2 = new BatchOfGoods("A", 5670054, 10, 100, *(new Date(2, 10, 2002)));
+	batch3 = new BatchOfGoods("A", 54654, 10, 100, *(new Date(11, 1, 1996)));
+
+	ShopWithShowcase shop1 = ShopWithShowcase();
+	ShopWithShowcase shop2 = ShopWithShowcase();
+	ShopWithShowcase shop3 = ShopWithShowcase();
+
+	shop1.setNameOfShop("Shop A");
+	shop2.setNameOfShop("Shop B");
+	shop3.setNameOfShop("Shop C");	
+
+	shop1.investMoney(20000);
+	shop2.investMoney(20000);
+	shop3.investMoney(20000);
+
+	shop1 << cout;
+
+	shop1.investInShowcase(10000);
+	shop2.investInShowcase(20000);
+	shop3.investInShowcase(10000);
+	shop3.investInShowcase(10000);
+
+	shop1.addBatch(batch1);
+	shop2.addBatch(batch2);
+	shop3.addBatch(batch3);
+
+	shop1.setMargin(10);
+
+	SelectiveCustomer customer;
+
+	customer.rememberShop(&shop1);
+	customer.rememberShop(&shop2);
+	customer.rememberShop(&shop3);
+
+	customer.buyGoods("A", 150);
+
+	shop1.displayAssortment();
+	shop2.displayAssortment();
+	shop3.displayAssortment();
+	
 }

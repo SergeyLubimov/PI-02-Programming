@@ -1,9 +1,17 @@
 import java.util.*;
 
-public class SupplierOfGoods
+public abstract class SupplierOfGoods
 {
 	  private ArrayList<Contract> contracts_;
       private float margin_;
+      
+      public abstract boolean acceptOrder(Shop shop, String name, int quantity);
+      
+      
+      public ArrayList<Contract> getContracts()
+      {
+    	  return contracts_;
+      }
 
       public SupplierOfGoods()
       {
@@ -29,20 +37,7 @@ public class SupplierOfGoods
           if(n >= 0) 
               contracts_.add(new Contract(shop));
       }
-      public boolean acceptOrder(Shop shop, String name, int quantity)
-      {            
-          int n = contracts_.size();
-          int i = 0;
-          for(; i < n; i++)            
-              if (contracts_.get(i).shop_ == shop) n = -1;
-
-          boolean ret = false;
-          if (n < 0)
-          {
-              contracts_.get(i - 1).orders_.add(new Order(name, quantity));
-          }
-          return ret;            
-      }
+      
       public void fulfillOrders()
       {
           for(Contract contract: contracts_)

@@ -18,15 +18,16 @@ private:
 	std::list<ReadyOrder*> ready_orders_;	
 
 public:
+
+	virtual bool acceptOrder(Shop* contact, std::string name, int quantity) = 0;
+
 	SupplierOfGoods();
 
 	SupplierOfGoods(int percent);
 
 	void addContract(Shop* shop);
 
-	void setMargin(unsigned percent);
-
-	bool acceptOrder(Shop* contact, std::string name, int quantity);
+	void setMargin(unsigned percent);	
 
 	void fulfillOrders();
 

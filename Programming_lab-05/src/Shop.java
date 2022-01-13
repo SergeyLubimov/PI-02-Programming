@@ -1,12 +1,32 @@
 
-public class Shop
+public class Shop implements Cloneable 
 {
 	 private String name_;
      private Warehouse warehouse_;
-     private float cash_;
-     private float margin_;
+     protected float cash_;
+     protected float margin_;
      private SupplierOfGoods contract_with_supplier_;
 
+     
+    /* @Override
+     public Shop clone() throws CloneNotSupportedException
+     {
+         return (Shop) super.clone();
+     }*/
+     
+     @Override
+     public Shop clone() throws CloneNotSupportedException
+     {
+         Shop copy = (Shop) super.clone();
+         copy.warehouse_ = this.warehouse_.clone();
+         return copy;
+     }
+     
+     public Warehouse getWarehouse()
+     {
+    	 return warehouse_;
+     }
+         
      public Shop()
      {
          margin_ = 1;

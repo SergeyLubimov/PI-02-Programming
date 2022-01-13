@@ -30,6 +30,7 @@ std::string Shop::getName()
 void Shop::setMargin(unsigned percent)
 {
 	margin_ = 1 + float(percent) / 100;
+	std::cout << "It's Shop\n";
 }
 
 bool Shop::setNameOfShop(std::string name)
@@ -119,5 +120,30 @@ void Shop::investMoney(float money)
 {
 	if(money > 0)
 		cash_ += money;
+}
+
+float Shop::getMargin()
+{
+	return margin_;
+}
+
+Warehouse Shop::getWarehouse()
+{
+	return warehouse_;
+}
+
+SupplierOfGoods* Shop::getContractWithSupplier()
+{
+	return contract_with_supplier_;
+}
+
+void Shop::setWarehouse(Warehouse warehouse)
+{
+	warehouse_ = warehouse;
+}
+
+void Shop::setContractWithSupplier(SupplierOfGoods *contract)
+{
+	contract_with_supplier_ = contract;
 }
 

@@ -8,12 +8,15 @@ class Shop
 {
 private:
 	std::string name_;
-	Warehouse warehouse_;
-	float cash_;
-	float margin_;
+	Warehouse warehouse_;		
 	SupplierOfGoods* contract_with_supplier_;	
 
+protected:
+	float cash_;
+	float margin_;
+
 public:
+
 	Shop();
 
 	Shop(std::string name);
@@ -22,7 +25,11 @@ public:
 
 	std::string getName();
 
-	void setMargin(unsigned percent);
+	/*virtual */void setMargin(unsigned percent);
+	/*{
+		margin_ = 1 + float(percent) / 100;
+		std::cout << "It's Shop\n";
+	}*/
 
 	bool setNameOfShop(std::string name);
 
@@ -39,5 +46,15 @@ public:
 	void redeemOrders();
 
 	void investMoney(float money);
+
+	float getMargin();
+
+	Warehouse getWarehouse();
+
+	SupplierOfGoods* getContractWithSupplier();
+
+	void setWarehouse(Warehouse warehouse);
+
+	void setContractWithSupplier(SupplierOfGoods* contract);
 
 };

@@ -10,7 +10,6 @@ int Customer::buyGoods(std::string name, const int q)
 	int Q = q;
 
 	std::list<Shop*>::iterator it = shop_in_mind_.begin();
-	//it++;
 
 	while (Q > 0 && it != shop_in_mind_.end())
 	{

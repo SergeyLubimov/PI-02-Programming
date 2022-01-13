@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Programming_lab_06
 {
-    class Shop
+    class Shop: ICloneable
     {
         private string name_;
         private Warehouse warehouse_;
@@ -14,10 +14,48 @@ namespace Programming_lab_06
 
         private static string str_ = "Checking a static field!";
 
+        public object Clone()
+        {
+            Shop copy = new Shop(this.name_, 0, this.cash_);
+            copy.margin_ = this.margin_;
+            copy.contract_with_supplier_ = this.contract_with_supplier_;
+            copy.warehouse_ = (Warehouse)warehouse_.Clone();
+            return copy;
+        }
+
         public static string Str
         {
             get { return str_; }
             set { str_ = value; }
+        }
+
+        public Warehouse Warehouse
+        {
+            get { return warehouse_; }
+        }
+
+        public float Cash
+        {
+            get
+            {
+                return cash_;
+            }
+            set
+            {
+                cash_ = value;
+            }
+        }
+
+        public float Margin
+        {
+            get
+            {
+                return margin_;
+            }
+            set
+            {
+                margin_ = value;
+            }
         }
 
 
@@ -102,7 +140,16 @@ namespace Programming_lab_06
             Console.WriteLine(str + warehouse_.getPackagesAsString());
         }
 
-        
-        
+        public override string ToString()
+        {
+            string str = String.Format($"\n\n*** {name_} ***\n|cash: {cash_}");
+
+            str += warehouse_.getPackagesAsString();
+
+            return str;
+        }
+
+
+
     }
 }

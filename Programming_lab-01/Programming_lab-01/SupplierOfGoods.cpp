@@ -23,6 +23,7 @@ void SupplierOfGoods::setMargin(unsigned percent)
 	margin_ = 1 + float(percent) / 100;
 }
 
+
 bool SupplierOfGoods::acceptOrder(Shop* contact, std::string name, int quantity)
 {
 	std::list<Shop*>::iterator it1;
@@ -36,6 +37,7 @@ bool SupplierOfGoods::acceptOrder(Shop* contact, std::string name, int quantity)
 	}
 	return false;
 }
+
 
 void SupplierOfGoods::fulfillOrders()
 {

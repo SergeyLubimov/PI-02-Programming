@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Customer
+public class Customer implements ICustomer
 {
 	  private ArrayList<Shop> shop_in_mind_;
 

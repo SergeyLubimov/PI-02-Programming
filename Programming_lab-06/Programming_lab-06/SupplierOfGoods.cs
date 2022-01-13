@@ -4,10 +4,17 @@ using System.Text;
 
 namespace Programming_lab_06
 {
-    class SupplierOfGoods
+    abstract class SupplierOfGoods
     {
         private List<Contract> contracts_;
         private float margin_;
+
+        public List<Contract> Contracts
+        {
+            get { return contracts_; }
+        }
+
+        public abstract bool acceptOrder(Shop shop, string name, int quantity);        
 
         public SupplierOfGoods()
         {
@@ -33,21 +40,7 @@ namespace Programming_lab_06
             if(n >= 0) 
                 contracts_.Add(new Contract(shop));
         }
-        public bool acceptOrder(Shop shop, string name, int quantity)
-        {            
-            int n = contracts_.Count;
-            int i = 0;
-            for(; i < n; i++)            
-                if (contracts_[i].shop_ == shop) n = -1;
-
-            bool ret = false;
-            if (n < 0)
-            {
-                ret = true;
-                contracts_[i - 1].orders_.Add(new Order(name, quantity));
-            }
-            return ret;            
-        }
+        
         public void fulfillOrders()
         {
             foreach(Contract contract in contracts_)
